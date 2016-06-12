@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/Button01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试网络连接" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="我的设备:" />
+
+        <Button
+            android:id="@+id/btn_show_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试dialog" />
+
+        <Button
+            android:id="@+id/btn_operate_db"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SQLite操作" />
+
+        <Button
+            android:id="@+id/btn_slide_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="滑动进度条控制" />
+
+        <Button
+            android:id="@+id/btn_location_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定位当前城市" />
+
+        <Button
+            android:id="@+id/btn_play_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频播放" />
+
+        <Button
+            android:id="@+id/btn_slidebar_dialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="slide对话框" />
+
+        <EditText
+            android:id="@+id/et_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/btn_obtain_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取手机信息" />
+
+        <Button
+            android:id="@+id/btn_connect_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="测试网络连接" />
+        
+        <Button
+            android:id="@+id/btn_jpush_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="JPush测试" />
+    </LinearLayout>
+
+</ScrollView>

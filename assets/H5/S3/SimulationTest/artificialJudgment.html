@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html manifest="/offline.manifest">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>人工评判</title>
+	<script src="../js/mui.js"></script>
+	<link href="../css/mui.css" rel="stylesheet"/>
+	<style>
+		.clear{
+			clear: both;
+		}
+		.topHeader{
+			height: 44px;
+		}
+		.topHeader h5{
+			float: left;
+			margin: 5px;
+			line-height: 38px;
+		}
+		.topHeader h5 span{
+			font-weight: bold;
+		}
+		.topHeader h5.HaveSigna{/*//有*/
+			float: right;
+			line-height: 30px;
+			border: 1px solid #33ff00;
+			border-radius: 5px;
+			color:#33ff00;
+		}
+		.topHeader h5.NoSignal{
+			/*没有*/
+			float: right;
+			line-height: 30px;
+			border: 1px solid #8F8F94;;
+			border-radius: 5px;
+			color:#8F8F94;
+		}
+		.bottomHeader{
+			/*width:100% ;*/
+			clear: both;
+			height: 44px;
+			/*padding-left: 20px;*/
+			/*padding-top: 20px;*/
+		}
+		.bottomHeader a{
+			height: 44px;
+			line-height: 44px;
+		}
+		.TestIcon{
+			background-size:100% 100% ;
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			position: relative;
+			top: 3px;
+			margin-right: 3px;
+		}
+		.teachingModelIcon{
+			background: url("../img/u392.png") no-repeat;
+		}
+		.RandomLightIcon{
+			background: url("../img/u394.png") no-repeat;
+
+		}
+		.NightModeIcon{
+			background: url("../img/u396.png") no-repeat;
+
+		}
+		/*以上不要*/
+
+		.SelectStyles{
+			color:#5480d8;
+		}
+		.projectActive .SelectStyles{
+			/*选中后的样式*/
+			color:#f67f12;
+			font-weight: bold;
+			border-bottom: 2px solid #f67f12;
+		}
+		.Points{
+			color:#8F8F94;
+			font-size: 12px;
+		}
+		.triangle{
+			position: absolute;
+			border: solid 1px #f2f2f2;
+			border-right: none;
+			border-bottom: none;
+			background-color: #f2f2f2;
+			width: 10px;
+			height: 10px;
+			left: 80px;
+			top: -5px;
+			-webkit-transform: rotateZ(45deg);
+			transform: rotateZ(45deg);
+		}
+		.ContentItemTop span:nth-of-type(2),.ContentItemTop span:nth-of-type(3){
+			position: relative;
+			top: 10px;
+			/*line-height: 2.5;*/
+		}
+		.ProjectIcon{
+			float: left;
+			/*margin: 10px;*/
+			/*line-height: 1;*/
+			margin-right: 10px;
+		}
+		.ProjectIcon img{
+
+			width:40px !important;
+			height: 40px;
+		}
+
+		.ContentItemMiddle{
+			clear: both;
+			min-height: 20px;
+			height: auto;
+		}
+		.ContentItemMiddle ul{
+			list-style: none;
+
+		}
+
+		.LeftLine{
+			position: absolute;
+			width:2px;
+			min-height: 20px;
+			margin-left: 19px;
+			margin-right: 19px;
+			height: 100%;
+		}
+		.GrayLine{
+			/*灰色的线*/
+			background: url("../img/u66_line.png") no-repeat;
+			background-size:100% 100% ;
+
+		}
+		.projectActive .GrayLine{
+			/*蓝色的线*/
+			background: url("../img/u69_line.png") no-repeat;
+			background-size:100% 100% ;
+		}
+		.rightMain{
+			position: relative;
+			height: auto;
+		}
+		.rightMainInfo{
+			position: relative;
+			width: 88%;
+			left: 40px;
+			padding: 10px;
+			background-color: #f2f2f2;
+			border-radius: 10px;
+			max-height: 55px;
+			min-height: 20px;
+			height: auto;
+			overflow: hidden;
+		}
+		.rightMainInfo ul{
+
+			margin: 0;
+			padding: 0;
+			width: 100%;
+		}
+		.ContentItembottom{
+			position: absolute;
+			bottom:-5px;
+			left:25px;
+
+			width: 20px;
+			height: 14px;
+		}
+		.GrayJ{
+			background: url("../img/u67_end.png") no-repeat;
+			background-size:20px 14px;
+
+		}
+		.projectActive .GrayJ{
+			background: url("../img/u69_end.png") no-repeat;
+			background-size:20px 14px;
+		}
+		.ProjectIconImg img{
+			width: 40px !important;
+			height: 40px;
+		}
+		body{
+			overflow: hidden;
+		}
+		.mui-slider-item{
+			overflow: auto;
+			height: 90vh !important;
+
+		}
+	</style>
+	<script type="text/javascript" charset="utf-8">
+		applicationCache.addEventListener('updateready', function(e) {
+			if (applicationCache.status == applicationCache.UPDATEREADY) {
+				applicationCache.swapCache(); //使用新版本资源
+				window.location.reload(); //刷新页面
+			}
+		}, false);
+		mui.init({
+			gestureConfig:{
+				tap: true, //默认为true
+				doubletap: true, //默认为false
+				longtap: true, //默认为false
+				swipe: true, //默认为true
+				drag: true //默认为true
+			}
+
+		});
+	</script>
+</head>
+<body>
+<header class="mui-bar mui-bar-nav" style="height: 44px;">
+	<div class="topHeader">
+		<h5>行驶: <span id="TravelDistance">0km</span></h5>
+		<h5>用时: <span id="TravelTime">00:00:00</span></h5>
+		<h5>
+			<span class="TestIcon "></span>
+			<span class="TestIcon "></span>
+			<span class="TestIcon "></span>
+		</h5>
+
+		<!--
+            作者：puyi2008@126.com
+            时间：2016-01-20
+            描述：
+            HaveSigna--有信号
+            NoSignal--没有信号
+        -->
+
+
+		<h5 id="GPSsignal" class="NoSignal">无信号</h5>
+	</div>
+
+</header>
+
+<div id="main" class="mui-content">
+	<script id="content" type="text/html">
+		<div id="Gallery" class="mui-slider mui-table-view-cell" style="padding:0;">
+			<div class="mui-slider-group">
+				<!--第一组-->
+				<div id="Artificial" class="mui-slider-item">
+					<div class=" bottomHeader">
+						<!--人工评判-->
+						<!--<a href="#" class="mui-h5 mui-pull-left" open-type="common"><<临时项目</a>-->
+						<a href="#" class="mui-h5 mui-pull-right" >模拟考试>></a>
+					</div>
+					<div class="clear"></div>
+					<!--这是人工评判内容-->
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell mui-collapse mui-active colorBlue" >
+							<a class="mui-navigate-right mui-h5" href="#">
+								当前项目: <span><%=item%></span><span class="Points">(扣 <%=detailed.length*10%>分)</span>
+							</a>
+
+							<ul class="mui-table-view mui-table-view-chevron" style="">
+								<%for(var i=0;i<detailed.length;i++){%>
+								<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+									<p><%=i+1%>、<%=detailed[i].title%> <%=detailed[i].fraction%>分</p>
+								</li>
+								<%}%>
+
+							</ul>
+						</li>
+						<li class="mui-table-view-cell mui-collapse mui-active colorBlue" >
+							<a class="mui-navigate-right  mui-h5" href="#">
+								综合评判
+							</a>
+
+							<ul class="mui-table-view mui-table-view-chevron" style="">
+								<%for(var i=0;i<comprehensive.length;i++){%>
+								<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+									<p><%=i+1%>、<%=comprehensive[i].title%> <%=detailed[i].fraction%>分</p>
+								</li>
+								<%}%>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--第二组-->
+				<!-------------------------------------------------------------------------------------->
+				<div id="Simulation" class="mui-slider-item mui-active">
+					<div class=" bottomHeader">
+
+						<a href="#" class="mui-h5 mui-pull-left" open-type="common"><< 人工评判 </a>
+						<a href="#" class="mui-h5 mui-pull-right" open-type="common">临时项目>></a>
+					</div>
+					<div class="clear"></div>
+					<!--这是模拟考试内容-->
+					<!--这是模拟考试内容-->
+					<div class="mui-table-view">
+						<!--这是一个项目的内容-->
+						<!--添加class projectActive代表选中或正在执行-->
+						<%for(var i=0;i<test.length;i++){%>
+						<div class="mui-table-view-cell ContentItem">
+							<div class="ContentItemTop">
+								<span class="ProjectIcon"><img src="<%=test[i].iconImg%>"/></span> <span class="mui-h5 SelectStyles"><%=i+1%>、<%=test[i].title%></span><span class="Points">（扣<%=test[i].detailed.length*10%>分）</span>
+							</div>
+							<div class="ContentItemMiddle">
+								<div class="LeftLine GrayLine">
+									<!--左边的线-->
+								</div>
+								<div class="rightMain">
+									<!--右边的内容-->
+									<div class="triangle">
+										<!--小三角形-->
+
+									</div>
+									<div class="rightMainInfo">
+										<!--具体-->
+										<ul class="clear">
+											<%for(var j=0;j<test[i].detailed.length;j++){%>
+											<li class="mui-h6">
+												<%=j+1%> <%=test[i].detailed[j].title%> <%=test[i].detailed[j].fraction%>分
+											</li>
+											<%}%>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="ContentItembottom GrayJ"></div>
+						</div>
+
+						<%}%>
+						</div>
+					</div>
+						<!--结束-->
+						<!--这是第二个-->
+						<!----------------------------------------------------------------------------------------->
+
+						<!--这是三个项目的内容-->
+						<!--添加class projectActive代表选中或正在执行-->
+
+						<!--结束-->
+						<!--这是四个项目的内容-->
+						<!--添加class projectActive代表选中或正在执行-->
+
+					<!--第三组-->
+					<!------------------------------------------------------------------>
+				<div id="Temporary" class="mui-slider-item">
+						<div class=" bottomHeader">
+
+							<a href="#" class="mui-h5 mui-pull-left" open-type="common"><< 模拟考试</a>
+							<!--<a href="#" class="mui-h5 mui-pull-right" open-type="common">模拟考试>></a>-->
+						</div>
+						<div class="clear"></div>
+						<!--这是临时项目内容-->
+						<ul class="mui-table-view mui-grid-view mui-grid-12">
+							<%for(var i=0;i<Temporary.length;i++){%>
+							<li class="mui-table-view-cell mui-media mui-col-xs-3">
+								<a href="#" open-type="TemporaryP">
+									<span class="ProjectIconImg"><img src="<%=Temporary[i].imgSrc%>" /></span>
+									<div class="mui-media-body"><%=Temporary[i].title%></div>
+								</a>
+							</li>
+							<%}%>
+
+
+						</ul>
+
+					</div>
+
+			</div>
+
+		</div>
+	</script>
+
+</div>
+<script src="../js/template-native.js"></script>
+<!--<script type="text/javascript" src="../js/openNews.js" ></script>-->
+<script>
+	//[界面初始化]
+	//绑定数据
+	//在此处修改data即可
+	var data={
+		"item":"公共汽车站",
+		"detailed":[
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容扣扣分内容扣分项内容扣分项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"}
+		],
+		"comprehensive":[
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容扣扣分内容扣分项内容扣分项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"},
+			{"title":"扣分内容扣分项内容扣分内容项内容","fraction":"10"}
+		],
+		"test":[
+			{"ID":"01","iconImg":"../img/u46_2.png","title":"考试准备","detailed":[
+				{"title":"扣分内容扣分项内容扣分内容扣分项内容","fraction":"10"},
+				{"title":"扣分内容扣分项内容扣分内容扣分项内容","fraction":"10"},
+				{"title":"扣分内容扣分项内容扣分内容扣分项内容","fraction":"10"},
+				{"title":"扣分内容扣分项内容扣分内容扣分项内容","fraction":"10"}
+			]}
+		],
+		"Temporary":[
+			{"imgSrc":"../../icon/DrivingIcon07.png","title":"考试准备"},
+			{"imgSrc":"../../icon/DrivingIcon02.png","title":"起步"},
+			{"imgSrc":"../../icon/DrivingIcon27.png","title":"路口直行"},
+			{"imgSrc":"../../icon/DrivingIcon18.png","title":"变更车道"},
+			{"imgSrc":"../../icon/DrivingIcon16.png","title":"公共汽车站"},
+			{"imgSrc":"../../icon/DrivingIcon15.png","title":"学校"},
+			{"imgSrc":"../../icon/DrivingIcon10.png","title":"直线行驶"},
+			{"imgSrc":"../../icon/DrivingIcon11.png","title":"左转"},
+			{"imgSrc":"../../icon/DrivingIcon12.png","title":"右转"},
+			{"imgSrc":"../../icon/DrivingIcon08.png","title":"加减档"},
+			{"imgSrc":"../../icon/DrivingIcon17.png","title":"会车"},
+			{"imgSrc":"../../icon/DrivingIcon18.png","title":"超车"},
+			{"imgSrc":"../../icon/DrivingIcon22.png","title":"减速"},
+			{"imgSrc":"../../icon/DrivingIcon21.png","title":"限速"},
+			{"imgSrc":"../../icon/DrivingIcon13.png","title":"人行横道"},
+			{"imgSrc":"../../icon/DrivingIcon23.png","title":"有行人"},
+			{"imgSrc":"../../icon/DrivingIcon26.png","title":"隧道"},
+			{"imgSrc":"../../icon/DrivingIcon07.png","title":"考试准备"}
+		]
+	};
+	var html = template('content', data);
+	document.getElementById('main').innerHTML = html;
+	//绑定数据结束
+
+	//[1.加载模式图标]
+	var selft;
+	var TestIcon = document.getElementsByClassName('TestIcon');
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) return unescape(r[2]); return null;
+	}
+	selft = GetQueryString("selft");
+	function judgeIcon(selft) {
+		if (selft == "one") {
+			TestIcon[0].className = "TestIcon teachingModelIcon";
+		}
+		else if (selft == "two") {
+			Testcon[1].className = "TestIcon RandomLightIcon";
+		}
+		else if (selft == "three") {
+			TestIcon[2].className = "TestIcon NightModeIcon";
+		}
+		else if (selft == "Adjacent1") {
+			TestIcon[0].className = "TestIcon teachingModelIcon";
+			TestIcon[1].className = "TestIcon RandomLightIcon";
+		}
+		else if (selft == "Separated") {
+			TestIcon[0].className = "TestIcon teachingModelIcon";
+			TestIcon[2].className = "TestIcon NightModeIcon";
+		}
+		else if (selft == "Adjacent2") {
+			TestIcon[1].className = "TestIcon RandomLightIcon";
+			TestIcon[2].className = "TestIcon NightModeIcon";
+		}
+		else if (selft == "all") {
+			TestIcon[0].className = "TestIcon teachingModelIcon";
+			TestIcon[1].className = "TestIcon RandomLightIcon";
+			TestIcon[2].className = "TestIcon NightModeIcon";
+		}
+	}
+	judgeIcon(selft);
+
+	//[2.加载线路]
+	function loadLine() {
+		var source = window.DrivingSubjectThree.getLine();
+		var linejson = eval("(" + source + ")")//获取线路json
+		var parent = document.getElementById("main_slide");
+		for (var item in linejson) {
+			var oDiv = document.createElement('div');
+			oDiv.className = "mui-table-view-cell ContentItem";
+			oDiv.tagName ="project"+linejson[item].Index;
+			var obj = '<div class="ContentItemTop">' +
+					'<span class="ProjectIcon"><img src="../img/u46_2.png"/></span> <span class="mui-h5 SelectStyles">'+linejson[item].Name+'</span><span class="Points">（扣10分）</span>' +
+					'</div>' +
+					'<div class="ContentItemMiddle">' +
+					'<div class="LeftLine GrayLine">' +
+					'</div>' +
+					'<div class="rightMain">' +
+					'<div class="triangle">' +
+					'</div>' +
+					'<div class="rightMainInfo">' +
+					'<ul class="deductinfo">' +
+					'</ul>' +
+					'</div>' +
+					'</div>' +
+					'</div>' +
+					'<div class="ContentItembottom GrayJ"></div>';
+			oDiv.innerHTML = obj;
+			parent.appendChild(oDiv)
+		}
+
+	}
+	loadLine();
+
+	//[扣分添加]
+	function addDeductItem(deductitem) {
+		var json = eval("(" + deductitem + ")"); //扣分项json
+		var ul = document.getElementsByTagName("project" + "'+json.Index+'")[0].getElementsByClassName("deductinfo")[0];
+		var li=document.createElement('li');
+		li.className = "mui-h6";
+		li.innerHTML = json.Title;
+		ul.appendChild(li);
+	}
+
+
+	//[开始考试]
+
+	//[结束考试]
+
+	//[进度报告]
+
+	//[信号刷新]
+	function signalRefresh(signal){
+		var json = eval("(" + signal + ")");
+		var tt=document.getElementById("TravelDistance");
+		tt.innerHTML = json.mileage+"m";
+	}
+
+	//[手动启动项目]
+	function insertAfter(newElement, targetElement) {
+		var parent = targetElement.parentNode;
+		if (parent.lastChild == targetElement) {
+			parent.appendChild(newElement);
+		} else {
+			parent.insertBefore(newElement, targetElement.nextSibling);
+		}
+	}
+	mui("#Temporary").on("tap", "a", function () {
+
+		var type = this.getAttribute("open-type");
+		var projectActive = document.getElementsByClassName("projectActive")[0];
+		var imgSrc = this.getElementsByTagName("img")[0].src;
+		var divFont = this.getElementsByTagName("div")[0].innerHTML;
+		if (type == "TemporaryP") {
+			if (confirm("确定要添加吗?")) {
+				var oDiv = document.createElement('div');
+				oDiv.className = "mui-table-view-cell ContentItem temporary";
+				var obj = '<div class="ContentItemTop">' +
+						'<span class="ProjectIcon"><img src="' + imgSrc + '"/></span> <span class="mui-h5 SelectStyles">临时项目:' + divFont + '</span><span class="Points">（扣10分）</span>' +
+						'</div>' +
+						'<div class="ContentItemMiddle">' +
+						'<div class="LeftLine GrayLine"></div>' +
+						'<div class="rightMain"><div class="triangle"></div>' +
+						'<div class="rightMainInfo">' +
+						'<ul class="clear">' +
+						'<li class="mui-h6">① 扣分内容扣分项内容扣分内容扣分项内容 10分</li>' +
+						'<li class="mui-h6">② 扣分内容扣项内容扣分项内容 10分</li>' +
+						'</ul>' +
+						'</div>' +
+						'</div>' +
+						'</div>' +
+						'<div class="ContentItembottom GrayJ"></div>';
+				oDiv.innerHTML = obj;
+				insertAfter(oDiv, projectActive)
+			}
+		}
+		else if (type == "addTemporaryP") {
+			alert("这是添加")
+		}
+	})
+
+	//[手动评判]
+
+	//[模拟考试项目栏点击展开]
+	mui("#Simulation").on("tap", '.rightMainInfo', function () {
+		var h = this.style.maxHeight;
+		if (h) {
+			this.style.maxHeight = "";
+		} else {
+			this.style.maxHeight = "100%";
+		}
+
+	})
+	mui('#Simulation').on("doubletap", ".temporary", function () {
+		if (confirm("确定要删除吗?")) {
+			this.parentNode.removeChild(this);
+		}
+	})
+
+	//[计时]
+	var TravelTime = document.getElementById("TravelTime");
+	var time = 0; //时间
+	var h = "00", m = "00", s = "00";
+	function timer() {
+		//还有24小时没有判断
+		time++;
+		var n1 = Math.floor(time / 60);
+		var n2 = Math.floor(time / 3600);
+		if (time >= 86400) {
+			time = 0;
+			h = "00";
+			m = "00";
+			s = "00";
+		}
+		if (n1) {
+			if (n2) {
+				if (time < 36000) {
+					h = "0" + Math.floor(time / 3600)
+					if (n1 % 60 < 10) {
+						m = "0" + n1 % 60;
+						if (time % 60 < 10) {
+							s = "0" + time % 60;
+						} else {
+							s = time % 60;
+						}
+					} else {
+						m = n1 % 60;
+						if (time % 60 < 10) {
+							s = "0" + time % 60;
+						} else {
+							s = time % 60;
+						}
+					}
+				} else {
+					h = Math.floor(time / 3600);
+					if (n1 % 60 < 10) {
+						m = "0" + n1 % 60;
+						if (time % 60 < 10) {
+							s = "0" + time % 60;
+						} else {
+							s = time % 60;
+						}
+					} else {
+						m = n1 % 60;
+						if (time % 60 < 10) {
+							s = "0" + time % 60;
+						} else {
+							s = time % 60;
+						}
+					}
+				}
+			} else {
+				if (time < 600) {
+					m = "0" + Math.floor(time / 60);
+					if (time % 60 < 10) {
+						s = "0" + time % 60;
+					} else {
+						s = time % 60;
+					}
+				} else {
+					m = Math.floor(time / 60);
+					if (time % 60 < 10) {
+						s = "0" + time % 60;
+					} else {
+						s = time % 60;
+					}
+				}
+			}
+		} else {
+			if (time < 10) {
+				s = "0" + time;
+			} else {
+				s = time;
+			}
+		}
+		TravelTime.innerHTML = h + ":" + m + ":" + s;
+	}
+	var CycleTime = setInterval(timer, 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>单项选择</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.Xtubiao1{
+    		margin-top: -8px;
+    		display: inline-block;
+    		width:35px;
+    		height: 35px;
+    		background: url("../icon/note.png") no-repeat;
+    		background-size:100% 100%;
+    	}
+		.Xtubiao2{
+			margin-top: -8px;
+			display: inline-block;
+			width:35px;
+			height: 35px;
+			/*background: url("../icon/j01.png") no-repeat;*/
+			/*background-size:100% 100%;*/
+		}
+		.Xtubiao2 img{
+			width: 35px;
+		}
+    	.xiangjie{
+    		
+    	}
+    	.xiangjie h4{
+    		color:#000;
+    		font-weight: bold;
+    	}
+    	.xiangjie ul{
+    		list-style: none;
+    		margin: 0;
+    		padding: 15px;
+    	}
+    	.xiangjie ul li{
+    		margin-top: 15px;
+    		margin-bottom: 15px;
+    	}
+    	.xiangjie .xiangjieImg{
+    		width:100%
+    		
+    	} 
+    	.xiangjie .xiangjieImg img{
+    		width:49%;
+    	}
+    	.iconTP{
+    		background: url("img/u62.png") no-repeat;
+    		background-size: 100% 100%;
+    		display: inline-block;
+    		width: 50px;
+    		height: 50px;
+    	}
+		.iconTP img{
+			width:35px;
+			margin-top:5px;
+		}
+    	#SingleOperation .iconTPActive{
+    		background: url("img/u74.png") no-repeat;
+    		background-size: 100% 100%;
+    		display: inline-block;
+    		width: 50px;
+    		height: 50px;
+    	}
+    	.mui-active a div.mui-media-body{
+    		color:#0099ff !important;
+    		font-weight: bold;
+    	}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+<div id="main" class="mui-content">
+	<script id="content" type="text/html">
+		<!--顶部嘿多图标-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12" id="SingleOperation">
+			<%for(var i=0;i < Single.length;i++){%>
+			<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+				<a href="" open-type="Individual">
+					<span class="iconTP <%if(i==0){%>iconTPActive<%}%>"><img src="<%=Single[i].imgSrc%>" alt=".iconTP"/></span>
+					<div class="mui-media-body"><%=Single[i].title%></div>
+				</a>
+			</li>
+			<%}%>
+		</ul>
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#">
+					<h4><span class="Xtubiao1 mui-pull-left"></span> &nbsp;扣分 <span class="mui-h6 mui-pull-right" style="margin-top: 3px;">扣分<span id="koufenxiang"><%=DeductionN%></span>项,共<span id="koufen"><%=DeductionN*10%></span>分</span></h4>
+				</a>
+			</div>
+			<div class="mui-table-view-cell mui-h6">
+				<ul>
+					<%for(var i=0;i<DeductionP.length;i++){%>
+					<li><%=i+1%>.<%=DeductionP[i].title%></li>
+					<%}%>
+				</ul>
+			</div>
+		</div>
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#">
+					<h4><span class="Xtubiao2 mui-pull-left"><img src="../icon/Icon01.png" alt="图标"/></span> '加减档'详解 <span class="mui-pull-right mui-icon mui-icon-arrowdown" ></span></h4>
+				</a>
+			</div>
+			<div class="xiangjie" id="OperationVideo">
+				<ul>
+					<%for(var i=0; i<step.length;i++){%>
+					<li>
+						<a href="#">
+							<h5><%=i+1%>.<%=step[i].title%></h5>
+							<div class="xiangjieImg">
+								<img src="<%=step[i].videoSrc%>" alt="" />
+								<img src="<%=step[i].imgSrc%>" alt="" />
+							</div>
+							<div class="xiangjieFont">
+								<span class="mui-badge mui-badge-primary">操作步骤</span>&nbsp;<span class="mui-h6"><%=step[i].introduction%></span>
+							</div>
+							<p>
+								详解：<%=step[i].content%>
+							</p>
+						</a>
+					</li>
+					<%}%>
+
+				</ul>
+			</div>
+		</div>
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="" class="more" style="width: 100%;text-align: center">加载更多>></a>
+			</div>
+		</div>
+	</script>
+</div>
+	<script src="js/template-native.js"></script>
+	<script src="js/openNews.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		//绑定数据
+		var data={
+			"Single":[
+				{"imgSrc":"../icon/DrivingIcon01.png","title":"倒车入库"},
+				{"imgSrc":"../icon/DrivingIcon02.png","title":"起步"},
+				{"imgSrc":"../icon/DrivingIcon03.png","title":"侧方停车"},
+				{"imgSrc":"../icon/DrivingIcon04.png","title":"单边桥"},
+				{"imgSrc":"../icon/DrivingIcon05.png","title":"曲线行驶"},
+				{"imgSrc":"../icon/DrivingIcon15.png","title":"学校"},
+				{"imgSrc":"../icon/DrivingIcon22.png","title":"慢行"},
+				{"imgSrc":"../icon/DrivingIcon24.png","title":"禁止鸣笛"},
+				{"imgSrc":"../icon/DrivingIcon25.png","title":"???"},
+				{"imgSrc":"../icon/DrivingIcon08.png","title":"加减档"},
+				{"imgSrc":"../icon/DrivingIcon17.png","title":"会车"},
+				{"imgSrc":"../icon/DrivingIcon18.png","title":"超车"},
+				{"imgSrc":"../icon/DrivingIcon06.png","title":"直角转弯"},
+				{"imgSrc":"../icon/DrivingIcon21.png","title":"限速"},
+				{"imgSrc":"../icon/DrivingIcon14.png","title":"人行横道"},
+				{"imgSrc":"../icon/DrivingIcon23.png","title":"有行人"},
+				{"imgSrc":"../icon/DrivingIcon26.png","title":"隧道"},
+				{"imgSrc":"../icon/DrivingIcon20.png","title":"灯光"},
+				{"imgSrc":"../icon/DrivingIcon09.png","title":"靠边停车"}
+			],
+			"DeductionN":2,
+			"DeductionP":[
+				{"title":"【灯光1】扣分内容扣分项内容扣分项内容 10分"},
+				{"title":"【灯光1】扣分内容扣分项内容扣分项内容 10分"}
+			],
+			"step":[
+				{"title":"操作步骤一","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+				{"title":"操作步骤二","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+				{"title":"操作步骤三","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+				{"title":"操作步骤四","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+			]
+		};
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+		function SingleIconinitialization(){//灯光初始化
+			var SingleOperationli=document.getElementById("SingleOperation").getElementsByTagName("li");
+			for(var i=0;i<SingleOperationli.length;i++){
+				var spanI=SingleOperationli[i].getElementsByClassName("iconTP")[0]
+				removeClass(spanI,"iconTPActive");
+			}
+		}
+		mui("#SingleOperation").on("tap","a",function(){
+			//单项操作按钮
+			
+			var type = this.getAttribute("open-type");
+			if(type=="Individual"){
+//				alert("这是单项操作");
+				SingleIconinitialization();//
+				addClass(this.getElementsByClassName("iconTP")[0],"iconTPActive");//
+			}
+		})
+		mui("#OperationVideo").on("tap","a",function(){
+			alert("这是视频")
+		})
+	</script>
+</body>
+</html>

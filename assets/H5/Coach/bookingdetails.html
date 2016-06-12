@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>预约详情</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.IconBoxB{
+    		display: block;
+    		font-size: 12px;
+    		position: relative;
+    		width:90%;
+    		height: 34px;
+    		margin: 0 auto;
+    		
+    	}
+    	.IConBlue{
+    		background: url("img/u182.png") no-repeat;
+    		background-size:100% 100%;
+    		line-height: 1;
+    		padding-top: 5px;
+    		color:#d9cccc;
+    	}
+    	.IConBlue2{
+    		background: url("img/u186.png") no-repeat;
+    		background-size:100% 100%;
+    		line-height: 34px;
+    	}
+    	.IconOrange{
+    		background: url("img/u206.png") no-repeat;
+    		background-size:100% 100%;
+    		line-height: 1;
+    		padding-top: 5px;
+    		color:#d9cccc;
+    	}
+    	.IconGray{
+    		background: url("img/u232.png") no-repeat;
+    		background-size:100% 100%;
+    		line-height: 20px;
+    		padding-top: 5px;
+    		color:#d9cccc;
+    	}
+    	.HaveOur{
+    		color:#000;
+    	}
+    	.AfterClick{
+    		background: url("img/u248.png") no-repeat;
+    		background-size:100% 100%;
+    		line-height: 1;
+    		padding-top: 5px;
+    		color:#ffffff;
+    	}
+    	.RedOriginIcon{
+    		/*这是有消息时显示的小点*/
+    		display: inline-block;
+    		width: 6px;
+    		height: 6px;
+    		background: url("img/u199.png") no-repeat;
+    		background-size: 100% 100%;
+    		position: absolute;
+    		top: -2px;
+    		right: -2px;
+    		border-radius:3px ;
+    	}
+    	.TotalStyle{
+    		/*合计*
+    		 */
+    		 color:red;
+    		 font-size: 14px;
+    		 font-weight: bold;
+    	}
+    	.mui-btn{
+    		background-color: #ff9900;
+    		color:#fff;
+    		
+    	}
+    	.mui-btn:active{
+    		background-color: red;
+    		color:#fff;
+    		border-color:#ff9900 ;
+    	}
+		.mui-slider-item>.mui-table-view{
+			background-color: #e0e0e0;
+
+		}
+		.mui-slider-item>.mui-table-view>.mui-table-view-cell{
+			border-bottom: 1px solid #e0e0e0;
+			border-radius: 4px;
+			background-color:#fff;
+		}
+    </style>
+
+</head>
+<body>
+<div id="pullrefresh" class="mui-scroll-wrapper">
+	<div class="mui-content">
+		<div class="mui-slider" id="Gallery">
+			<div class="mui-slider-group">
+				<!--第一组-->
+				<div class="mui-slider-item">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<h5 style="text-align: center;"><span class="mui-pull-left"></span>
+							8/2(周一)
+							<span class="mui-pull-right">后一天>></span></h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>上午学车地址:成都市锦江区三环路航天立交外侧(加气站后面)</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">7:00-8:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">9:00-10:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">10:00-11:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">11:00-12:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>下午学车地址:成都是锦江区三环路龙潭立交外侧</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">12:00-13:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">13:00-14:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">14:00-15:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">15:00-16:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">16:00-17:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">17:00-18:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>晚上学车地址:待定</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">18:00-19:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">19:00-20:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">20:00-21:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">21:00-22:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">22:00-23:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">23:00-24:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--第二组-->
+				<div class="mui-slider-item">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<h5 style="text-align: center;"><span class="mui-pull-left"><<前一天</span>
+							8/3(周二)
+							<span class="mui-pull-right">后一天>></span></h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>上午学车地址:成都市锦江区三环路航天立交外侧(加气站后面)</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">7:00-8:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">9:00-10:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">10:00-11:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">11:00-12:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>下午学车地址:成都是锦江区三环路龙潭立交外侧</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">12:00-13:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">13:00-14:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">14:00-15:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">15:00-16:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">16:00-17:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">17:00-18:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>晚上学车地址:待定</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">18:00-19:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">19:00-20:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">20:00-21:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">21:00-22:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">22:00-23:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">23:00-24:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--第三组-->
+				<div class="mui-slider-item">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<h5 style="text-align: center;"><span class="mui-pull-left"><<前一天</span>
+							8/4(周三)
+							<span class="mui-pull-right">后一天>></span></h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>上午学车地址:成都市锦江区三环路航天立交外侧(加气站后面)</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">7:00-8:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">9:00-10:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">10:00-11:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">11:00-12:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>下午学车地址:成都是锦江区三环路龙潭立交外侧</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">12:00-13:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">13:00-14:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">14:00-15:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">15:00-16:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">16:00-17:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">17:00-18:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>晚上学车地址:待定</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">18:00-19:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">19:00-20:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">20:00-21:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">21:00-22:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">22:00-23:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">23:00-24:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--第四组-->
+				<div class="mui-slider-item">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<h5 style="text-align: center;"><span class="mui-pull-left"><<前一天</span>
+							8/5(周四)
+							<span class="mui-pull-right">后一天>></span></h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>上午学车地址:成都市锦江区三环路航天立交外侧(加气站后面)</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">7:00-8:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">9:00-10:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">10:00-11:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">11:00-12:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>下午学车地址:成都是锦江区三环路龙潭立交外侧</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">12:00-13:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">13:00-14:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">14:00-15:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">15:00-16:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">16:00-17:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">17:00-18:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>晚上学车地址:待定</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">18:00-19:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">19:00-20:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">20:00-21:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">21:00-22:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">22:00-23:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">23:00-24:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!--第五组-->
+				<div class="mui-slider-item">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<h5 style="text-align: center;"><span class="mui-pull-left"><<前一天</span>
+							8/6(周五)
+							<!--<span class="mui-pull-right">后一天>></span></h5>-->
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>上午学车地址:成都市锦江区三环路航天立交外侧(加气站后面)</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">7:00-8:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">9:00-10:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">10:00-11:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">11:00-12:00</span>
+									<span class="IconBoxB IConBlue">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">6:00-7:00</span>
+									<span class="IconBoxB IConBlue HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>下午学车地址:成都是锦江区三环路龙潭立交外侧</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">12:00-13:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">13:00-14:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">14:00-15:00</span>
+									<span class="IconBoxB IConBlue2">
+										已预约<span class="RedOriginIcon"></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">15:00-16:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">16:00-17:00</span>
+									<span class="IconBoxB IconOrange">
+										已被别人预约<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">17:00-18:00</span>
+									<span class="IconBoxB IconOrange HaveOur">
+										科目二 80.00<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+						<li class="mui-table-view-cell">
+							<h5>晚上学车地址:待定</h5>
+						</li>
+						<li class="mui-table-view-cell">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<li class="mui-table-view-cell mui-media  mui-col-xs-3">
+									<span class="mui-h6">18:00-19:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">19:00-20:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">20:00-21:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">21:00-22:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">22:00-23:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<span class="mui-h6">23:00-24:00</span>
+									<span class="IconBoxB IconGray">
+										休息<span class=""></span>
+									</span>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="mui-table-view-cell" style="height: 50px;">
+			<!--选择统计-->
+		</div>
+	</div>
+	<nav class="mui-bar mui-bar-tab">
+		<div class="mui-table-view-cell">
+			<div>
+				<p>已选择<span id="SelectTime">0</span>个小时</p>
+				<p class="TotalStyle">合计：￥<span id="TotalPrice">0.00</span></p>
+			</div>
+			<button id="Choose" class="mui-btn" style="">选好了</button>
+		</div>
+	</nav>
+</div>
+	<script>
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+
+					callback: downRefresh1
+				}
+
+			}
+		});
+		function downRefresh1(){
+			alert("向下");
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+		}
+		var SelectTime=document.getElementById("SelectTime");
+		var TotalPrice=document.getElementById("TotalPrice");
+		var Choose=document.getElementById("Choose");
+		var price=80;//单价
+		function hasClass( elements,cName ){
+			return !!elements.className.match( new RegExp( "(\\s|^)" + cName + "(\\s|$)") ); 
+			// ( \\s|^ ) 判断前面是否有空格 （\\s | $ ）判断后面是否有空格 两个感叹号为转换为布尔值 以方便做判断
+		};
+		function addClass(elements, cName) {  
+		    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+		}
+		function removeClass( elements,cName ){
+			if (hasClass(elements, cName)) {  
+			 	var reg = new RegExp('(\\s|^)' + cName + '(\\s|$)'); 
+//			 	console.log(elements.className);
+			    elements.className = elements.className.replace(reg,' ');  
+//			    alert(1)
+			} 
+		};
+	
+		mui(".mui-content").on("tap",".HaveOur",function(){
+			removeClass(this,"HaveOur")
+			this.className=this.className+" AfterClick";
+			calculation()
+		})
+		mui(".mui-content").on("tap",".AfterClick",function(){
+//			alert(1)
+			removeClass(this,"AfterClick");
+			this.className=this.className+" HaveOur";
+			calculation()
+		})
+		function calculation(){//计算合计小时和钱
+			var AfterClickNum=document.getElementsByClassName("AfterClick").length;
+			SelectTime.innerHTML=AfterClickNum;
+			TotalPrice.innerHTML=parseFloat(AfterClickNum*price).toFixed(2);
+		}
+		 
+		
+		Choose.addEventListener("tap",function(){
+			alert("这是提交")
+		})
+	</script>
+</body>
+</html>

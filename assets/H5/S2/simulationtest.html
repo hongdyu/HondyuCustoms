@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>模拟考试</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.iconTB{
+    		position: relative;
+    		top: 10px;
+    		display: inline-block;
+    		background: url("img/u228.png") no-repeat;
+    		background-size:100% 100%;
+    		width: 51px;
+    		height: 51px;
+    	
+    	}
+    	.mui-active .iconTB{
+    		position: relative;
+    		top: 10px;
+    		display: inline-block;
+    		background: url("img/u226.png") no-repeat;
+    		background-size:100% 100%;
+    		width: 51px;
+    		height: 51px;
+    	}
+    	#segmentedControl{
+    		background-color: #ffffff;
+    		padding-left: 10px;
+    	}
+    	#segmentedControl img{
+    		position: relative;
+    		top: -55px;
+    	}
+    	.segmentedControlDiv{
+    		width: 100%;
+    		height: 80px;
+    		
+    		position: relative;
+    		transition: margin-left 0.5s ease-in 0s;
+    	}
+    	#arrow{
+    		display: inline-block;
+    		position: absolute;
+    		bottom:5px;
+    		right: 5px;
+    		width: 40px;
+    		height: 40px;
+    		text-align: center;
+    		font-size: 35px;
+    	}
+    	.IconTF{
+    		position: relative;
+    		top: 5px;
+    		margin-right: 5px;
+    		display: inline-block;
+    		width: 31px;
+    		height: 21px;
+    		background: url("img/u80.png") no-repeat;
+    		background-size:100% 100%;
+    	}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<img src="img/u48.png" width="100%" class="ExaminationRoomPlan" id="ExaminationRoomPlan" />
+			</div>
+		</div>
+		<!--项目-->
+			
+				
+						
+								<!--箭头-->
+								<!--<img src="img/u239_1.png" width="48"/>-->
+			
+		<div id="segmentedControl" class="mui-segmented-control">
+			<div class="segmentedControlDiv"  id="segmentedControlDiv" >
+				<a class="mui-control-item mui-active" href="#item1mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车</div>
+			</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item2mobile">
+					<span class="iconTB"></span>
+					<div>直角转弯</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item3mobile">
+					<span class="iconTB"></span>
+					<div>倒车入库</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item4mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车1</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item5mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车2</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item6mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车3</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item7mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车4</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item8mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车5</div>
+				</a>
+			<img src="img/u239_1.png" width="48"/>
+			<a class="mui-control-item" href="#item9mobile">
+					<span class="iconTB"></span>
+					<div>侧方停车6</div>
+				</a>
+			</div>
+			<span id="arrow" class="mui-icon mui-icon-pulldown"></span>	
+				
+		</div>
+		<div class="mui-content-padded" style="margin:4px">
+			<!--第一个-->
+			<div id="item1mobile" class="mui-control-content mui-active">
+					
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:侧方停车</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--第二个-->
+			<div id="item2mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:直角转弯</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u242.jpg"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第三个-->
+			<div id="item3mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第四个-->
+			<div id="item4mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第五个-->
+			<div id="item5mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第六个-->
+			<div id="item6mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第七个-->
+			<div id="item7mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第八个-->
+			<div id="item8mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+			<!--<!--第九个-->
+			<div id="item9mobile" class="mui-control-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>项目:倒车入库</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<img src="img/u122.png"  width="100%"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<h5><span class="IconTF"></span>扣分项 <span class="mui-h6">扣分项2项,共20分</span></h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<p>  
+							1. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+						<p>  
+							2. 【直角转弯】扣分内容扣分项内容扣分项内容 10分
+						</p>
+					</li>
+					<li class="mui-table-view-cell">
+						<a href="#" class="mui-h5" style="text-align: center;color:#7099ff">连接评分设备>></a>
+						<p style="text-align: center;">评分设备,让教学更标准</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		var segmentedControlDiv=document.getElementById("segmentedControlDiv");
+		var arrow=document.getElementById("arrow")
+		var segA=segmentedControlDiv.getElementsByTagName("a")
+		arrow.addEventListener("tap",function(e){
+			
+			if(segmentedControlDiv.style.height!="auto"){
+				segmentedControlDiv.style.height="auto";
+				this.className="mui-icon mui-icon-arrowthinup";
+				 
+			}else{
+				segmentedControlDiv.style.height="80px";
+				this.className="mui-icon mui-icon-pulldown";
+			}
+		})
+		
+	</script>
+</body>
+</html>

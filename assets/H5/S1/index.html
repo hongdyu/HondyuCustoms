@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>科目一</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.iconT{
+    		position: relative;
+    		top: 7px;
+    		margin-right: 5px;
+    	}
+    	.BigButton{
+    		position: absolute;
+    		top: 0;
+    		width: 100%;
+    	}
+    	.BigButtonIcon{
+    		margin: 10px auto;
+    		display:block;
+    		background: url("img/u96_1.png") no-repeat;
+    		background-size:100% 100% ;
+    		width: 120px;
+    		height: 120px;
+    		text-align: center;
+    	}
+    	.BigButtonIcon h5{
+    		position: relative;
+    		top:60px;
+    	}
+    	.BigButtonIcon h6{
+    		position: relative;
+    		top:60px;
+    	}
+    	.fontRed{
+    		font-size: 26px;
+    		color:red;
+			font-weight: bold;
+    	}
+    	.fontBlue{
+    		font-size: 26px;
+    		color:#0099ff;
+			font-weight: bolder;
+    	}
+    	.WishIcon{
+    		display: inline-block;
+    		background: url("img/u209.png") no-repeat;
+    		background-size:100% 100%;
+    		width: 30px;
+    		height: 30px;
+    		position: relative;
+    		top: 8px;
+    	}
+    	.Crossline{
+    		background: url("img/line1.png") no-repeat;
+    		background-size:100% 100% ;
+    		
+    	}
+    </style>
+
+</head>
+<body>
+<div id="pullrefresh" class="mui-scroll-wrapper">
+	<div class="mui-content">
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell" style="padding:0">
+				<a href="#" open-type="common">
+					<img src="img/01.png" width="100%" >
+				</a>
+			</div>
+		</div>
+		<!--轮播--> 
+		<!--<div id="slider" class="mui-slider">-->
+			<!--<div class="mui-slider-group mui-slider-loop">-->
+				<!--<div class="mui-slider-item mui-slider-item-duplicate">-->
+					<!--<a href="#"><img src="img/01.png"></a>-->
+				<!--</div>-->
+				<!--<div class="mui-slider-item">-->
+					<!--<a href="#"><img src="img/02.png"></a>-->
+				<!--</div>-->
+				<!--<div class="mui-slider-item">-->
+					<!--<a href="#"><img src="img/03.png"></a>-->
+				<!--</div>-->
+				<!--<div class="mui-slider-item">-->
+					<!--<a href="#"><img src="img/04.png"></a>-->
+				<!--</div>-->
+				<!--<div class="mui-slider-item">-->
+					<!--<a href="#"><img src="img/01.png"></a>-->
+				<!--</div>-->
+				<!--<div class="mui-slider-item mui-slider-item-duplicate">-->
+					<!--<a href="#"><img src="img/02.png"></a>-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div class="mui-slider-indicator">-->
+				<!--<div class="mui-indicator mui-active"></div>-->
+				<!--<div class="mui-indicator"></div>-->
+				<!--<div class="mui-indicator"></div>-->
+				<!--<div class="mui-indicator"></div>-->
+			<!--</div>-->
+		<!--</div>-->
+		<!--轮播结束-->
+		<!--两个图标-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12">
+			<li class="mui-table-view-cell mui-media mui-col-xs-6">
+				<a href="#">
+					<h6><span class="iconT"><img src="img/u68.png" width="26" alt="" /></span>考试规则</h6>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6">
+				<a href="#">
+					<h6><span class="iconT"><img src="img/u68.png" width="26" alt="" /></span>答题技巧</h6>
+				</a>
+			</li>
+		</ul>
+		<!--练习-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12 Crossline">
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>随机练习</h6>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6"></li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>专项练习</h6>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>排除题集</h6>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6"></li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>易错题集</h6>
+					</div>
+				</a>
+			</li>
+			<div class="BigButton">
+				<a href="#" class="BigButtonIcon">
+				<h5>顺序练习</h5>
+				<h6>352/1229</h6>
+				</a>
+			</div>
+		</ul>
+		<!--练习结束-->
+		<!--记录-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12 Crossline">
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>考试记录</h6>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6"></li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>排行榜</h6>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>VIP报过</h6>
+					</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6"></li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="#">
+					<span><img src="img/u80.png" width="26"/></span>
+					<div class="mui-meida-body">
+						<h6>成绩分析</h6>
+					</div>
+				</a>
+			</li>
+			<div class="BigButton">
+				<a href="#" class="BigButtonIcon">
+				<h5>模拟考试</h5>
+				<h6>352/1229</h6>
+				</a>
+			</div>
+		</ul>
+		<!--记录结束-->
+		<!--我的-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12">
+			<li class="mui-table-view-cell mui-media mui-col-xs-6">
+				<a href="#">
+					<h6><span class="iconT"><img src="img/u68.png" width="26" alt="" /></span>我的错题<span class="mui-h6">(9)</span></h6>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-6">
+				<a href="#">
+					<h6><span class="iconT"><img src="img/u68.png" width="26" alt="" /></span>我的收藏<span class="mui-h6">(31)</span></h6>
+				</a>
+			</li>
+		</ul>
+		<!--我的结束-->
+		<!--成绩预测和人数-->
+		<div class="mui-table-view">	
+			<div class="mui-table-view-cell">
+				<h5>科目一成绩预测</h5>
+				<div style="text-align: center; padding: 15px;">
+					<span class="iconT"><img src="img/u230.png" width="27"/></span><span class="fontRed">79分</span>
+				</div>
+			</div>
+			<div class="mui-table-view-cell">
+				<h5>当前同时在线人数</h5>
+				<div style="text-align: center; padding: 15px;">
+					<span class="fontBlue">43,198</span>
+				</div>
+			</div>
+		</div>
+		<!--结束-->
+		<!--考前许愿-->
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#">
+					<h5 class="mui-pull-left"><span class="WishIcon"></span>考前许愿</h5>
+					<span class="mui-pull-right mui-h6" style="position: relative;top:20px">据说，在这里许过愿的人都考过了~</span>
+				</a>
+			</div>
+		</div>
+		<!--考前许愿结束-->
+		<!--驾考圈报名-->
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#">
+					<h5 class="mui-pull-left">驾考圈-科目一</h5>
+					<span class="mui-h6 mui-pull-right" style="position: relative;top: 5px;">参与人数3.8万</span>
+				</a>
+			</div>
+		</div>
+		<ul class="mui-table-view mui-grid-view mui-grid-12">	
+			<li class="mui-table-view-cell mui-media mui-col-xs-2">
+				<a href="#">
+					<img src="img/headImg.png" width="100%"/>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-2">
+				<a href="#">
+					<img src="img/headImg.png" width="100%"/>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-2">
+				<a href="#">
+					<img src="img/headImg.png" width="100%"/>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-2">
+				<a href="#">
+					<img src="img/headImg.png" width="100%"/>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-2">
+				<a href="#">
+					<img src="img/headImg.png" width="100%"/>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-2">
+				<a href="#">
+					<img src="img/headImg.png" width="100%"/>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+	<script type="text/javascript">
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+
+					callback: downRefresh1
+				}
+
+			}
+		});
+		function downRefresh1(){
+			alert("向下");
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+		}
+		//这结束
+		//获得slider插件对象
+		var gallery = mui('.mui-slider');
+		gallery.slider({
+		  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+		});
+		
+	</script>
+</body>
+</html>

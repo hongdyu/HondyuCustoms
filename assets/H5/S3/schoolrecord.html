@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>学车记录</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+	    .xiaoquan1{
+	    	display: inline-block;
+			border: 1px solid #f0f1f3;
+			background-color: #fff;
+			border-radius: 50%;
+			width: 35px;
+			height: 35px;
+	    	text-align:center;
+	    	line-height: 30px;
+	    	margin-top: 10%;
+	    	margin-bottom: 5px;
+	    	font-weight: bold;
+	    	color:#f9871f;
+	    }
+	    .xiaoquan2{
+	    	display: inline-block;
+			border: 1px solid #f0f1f3;
+			background-color: #fff;
+			border-radius: 50%;
+			width: 35px;
+			height: 35px;
+	    	text-align:center;
+	    	line-height: 35px;
+	    	margin-top: 10%;
+	    	margin-bottom: 5px;
+	    	font-weight: bold;
+	    	color:#709be2;
+	    }
+	    .xiaoquan3{
+	    	display: inline-block;
+	    	border: 1px solid #f0f1f3;
+			background-color: #fff;
+			border-radius: 50%;
+	    	width: 35px;
+	    	height: 35px;
+	    	text-align:center;
+	    	line-height: 30px;
+	    	margin-top: 10%;
+	    	margin-bottom: 5px;
+	    	font-weight: bold;
+	    	color:#56ff46;
+	    }
+    	.licheng{
+    		position: absolute;
+    		top:45px ;
+    		left: 70px;
+    		/*background: url("img/X01.png") no-repeat;
+    		background-size: center center;*/
+    		width: 75px;
+    		height: 75px;
+    		background-color: #f9871f;
+    		border-radius: 50%;
+    		text-align: center;
+    		color:#fff;
+    	}
+    	.yongshi{
+    		position: absolute;
+    		right: 40px;
+    		top:45px ;
+    		/*background: url("img/X02.png") no-repeat;
+    		background-size: center center;*/
+    		width: 95px;
+    		height: 95px;
+    		text-align: center;
+    		background-color: #709be2;
+    		border-radius: 50%;
+    		color:#fff;
+    	}
+    	
+    	.chengji{
+    		/*background: url("img/X03.png") no-repeat;
+    		background-size: center center;*/
+    		width: 65px;
+    		height: 65px;
+    		text-align: center;
+    		margin: 0 auto;
+    		background-color: #56ff46;
+    		border-radius: 50%;
+    		color:#fff;
+    	}
+    	.hKuang{
+			position: absolute;
+    		bottom: 20px;
+    		width: 100%;
+    	}
+    	.Pfont{
+    		width:180px;
+    		text-align: center;
+    		background-color: #ff9900;
+    		color:#fff;
+    		padding: 5px;
+    		font-size: 12px;
+    		margin: 0 auto;
+    		border-radius:5px ;
+    	}
+    	.Hjiantou{
+    		width:18px;
+    		height: 11px;
+    		background: url("img/u125.png") no-repeat;
+    		background-size:center center;
+    		margin: 0 auto;
+    	}
+    	.Htubiao1{
+    		float: left;
+    		display: inline-block;
+    		width:42px;
+    		height: 42px;
+			margin-top: -2px;
+    		background: url("../icon/aboard.png") no-repeat;
+    		background-size:100% 100% ;
+
+    	}
+		.Htubiao2{
+			float: left;
+			display: inline-block;
+			width:42px;
+			height: 42px;
+			margin-top: -2px;
+			background: url("../icon/PassRate.png") no-repeat;
+			background-size:100% 100% ;
+
+		}
+		.Htubiao3{
+			float: left;
+			display: inline-block;
+			width:42px;
+			height: 42px;
+			margin-top: -2px;
+			background: url("../icon/note.png") no-repeat;
+			background-size:100% 100% ;
+
+		}
+
+    	.bgTitle{
+    		display: inline-block;
+    		background: url("img/u186.png") no-repeat;
+    		background-size:center center ;
+    		width: 28px;
+    		height: 26px;
+    		color:#fff;
+    		line-height: 26px;
+    		text-align: center;
+    		margin-top: 8px;
+    	}
+    	.BgFangkuai{
+    		display: inline-block;
+    		background: url("img/u186.png") no-repeat;
+    		background-size:center center ;
+    		width: 28px;
+    		height: 26px;
+    		color:#fff;
+    		line-height: 26px;
+    		text-align: center;
+    		margin-top: 8px;
+    		margin-left:-5%;
+    	}
+    	.Bjiantou{
+    		display: inline-block;
+    		width: 16px;
+    		height: 17px;
+    		background: url("img/u260.png") no-repeat;
+    		background-size:16px 17px;
+    		margin-top: 10px;
+    	}
+    	.neirong{
+    		display: inline-block;
+    		width: 85%;
+    		height: auto;
+    		background: url("img/u318.png") no-repeat;
+    		background-size:100% 100%;
+    		padding: 10px;
+    		/*margin-top: 10px;*/
+    		margin-left: -2px;
+    	}
+    	
+    	._line{
+    		background: url("img/uline.png") repeat-y;
+    		background-size:1px 5px;
+    	}
+    	.mui-h5 span.dataColor{
+    		color:#f67f12;
+
+    	}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+<div id='main' class="mui-content">
+	<script id="content" type="text/html">
+		<!--那三个蓝圈-->
+		<div class="mui-table-view" style="height: 260px;">
+			<div class="licheng">
+				<span class="xiaoquan1 mui-h6">里程</span>
+				<div class="mui-media-body mui-h5"><%=distance%></div>
+			</div>
+			<div class="yongshi">
+				<span class="xiaoquan2 mui-h6">用时</span>
+				<div class="mui-media-body mui-h5"><%=Time%></div>
+			</div>
+			<div class="hKuang">
+				<div class="chengji">
+					<span class="xiaoquan3 mui-h6">成绩</span>
+					<div class="mui-media-body mui-h5"><%=achievement%></div>
+				</div>
+				<div class="Hjiantou"></div>
+				<div class="Pfont">
+					恭喜你，击败了<%=percentage%>的考友！
+				</div>
+			</div>
+		</div>
+		<!--三个黄色图标框-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12">
+			<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				<a href="#">
+					<span class="Htubiao1"></span>
+					<span class="mui-h5">
+						进入项目 <br />
+						<span class="dataColor"><%=frequency%></span>次
+					</span>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				<a href="#">
+					<span class="Htubiao2"></span>
+					<span class="mui-h5">
+						通过率 <br />
+						<span class="dataColor"><%=adopt%><span>
+					</span>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4">
+				<a href="#">
+					<span class="Htubiao3"></span>
+					<span class="mui-h5">
+						扣分项<br />
+						<span class="dataColor"><%=DeductionN%></span>个
+					</span>
+				</a>
+			</li>
+		</ul>
+
+
+		<div class="mui-table-view">
+			<!--柱状图表-->
+			<div id="main2" style="width: 100%; height: 300px; " class="mui-h5"></div>
+		</div>
+		<!--学成记录详细-->
+		<ul id="list" class="mui-table-view mui-table-view-chevron">
+			<%for(var i=0;i<list.length;i++){%>
+			<li class="mui-table-view-cell mui-collapse mui-active " >
+				<a class="mui-navigate-right mui-h5" href="#">
+					<span class="mui-pull-left mui-h6 bgTitle">记录</span>
+					<span class="mui-pull-left" style="margin: 10px;"><%=list[i].date%></span>
+					<span class="mui-pull-left">
+						<h5></h5>
+						<span class="mui-h6">行驶了<%=list[i].distance%>里</span>
+					</span>
+					<span class="mui-pull-right">
+						<h6><%=list[i].time%></h6>
+						<span class="mui-h6">上车<%=list[i].on%>-下车<%=list[i].off%></span>
+					</span>
+				</a>
+				<ul class="mui-table-view mui-table-view-chevron mui-h6">
+					<li class="mui-table-view-cell mui-collapse _line" style="padding-right: 0;">
+						<div class="BgFangkuai mui-pull-left">概要</div>
+						<div class="Bjiantou mui-pull-left"></div>
+						<div class="neirong mui-pull-left">
+							<div class="">
+								<div class="mui-pull-left mui-col-xs-4">
+									<span>进入项目</span>
+									<h5><%=list[i].frequency%>次</h5>
+								</div>
+								<div class="mui-pull-left mui-col-xs-4">
+									<span>通过率</span>
+									<h5><%=list[i].adopt%></h5>
+								</div>
+								<div class="mui-pull-left mui-col-xs-4">
+									<span>当期排名</span>
+									<h5>第<%=list[i].ranking%>位</h5>
+								</div>
+							</div>
+							<hr style="border:1px solid #ccc;"/>
+							<div class="">
+								<div class="mui-pull-left mui-col-xs-4">
+									<span>培训次数:<span><%=list[i].trainingNum%></span></span>
+								</div>
+								<div class="mui-pull-left mui-col-xs-4">
+									<span>教练:<span><%=list[i].coach%></span></span>
+								</div>
+								<div class="mui-pull-left mui-col-xs-4">
+									<span>车牌:<span><%=list[i].LicensePlate%></span></span>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse _line" style="padding-right: 0;">
+						<div class="BgFangkuai mui-pull-left">明细</div>
+						<div class="Bjiantou mui-pull-left"></div>
+						<div class="neirong mui-pull-left">
+							<h5>扣分明细:</h5>
+							<!--饼状图表-->
+							<div class="main1" style="width: 100%;height:200px;"></div>
+							<table style="width: 100%;" border="1"bordercolor="#ccc">
+								<thead>
+								<tr>
+									<th width="20%">项目</th>
+									<th width="20%">进入次数</th>
+									<th width="15%">通过率</th>
+									<th width="45%">扣分项</th>
+								</tr>
+								</thead>
+								<tbody>
+								<%for(var j=0;j<list[i].detailed.length;j++){%>
+								<tr>
+									<td><%=list[i].detailed[j].title%></td>
+									<td><%=list[i].detailed[j].frequency%></td>
+									<td><%=list[i].detailed[j].adopt%></td>
+									<td><%=list[i].detailed[j].DeductionP%></td>
+								</tr>
+								<%}%>
+
+								</tbody>
+							</table>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<%}%>
+		</ul>
+	</script>
+</div>
+	
+	<script src="js/echarts.min.js"></script>
+	<script src="js/template-native.js"></script>
+	<script type="text/javascript" src="js/openNews.js"></script>
+	<script>
+		//绑定数据
+		var data={
+			"distance":"91公里",
+			"Time":"3时45分",
+			"achievement":"80分",
+			"percentage":"88%",
+			"frequency":"152",
+			"adopt":"83%",
+			"DeductionN":"24",
+			"series":[5, 15, 30, 10, 42, 64,87],
+			"list":[
+				{"date":"12/21","title":"长征考场线路","distance":"35","time":"1时46分","on":"8:03","off":"9:49","frequency":"152","adopt":"82%","ranking":"269","trainingNum":"3","coach":"李师傅","LicensePlate":"川A1267学","detailed":[
+					{"title":"考试准备","frequency":15,"adopt":"15%","DeductionP":"扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容"},
+					{"title":"起步","frequency":16,"adopt":"20%","DeductionP":"扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容"},
+					{"title":"停车","frequency":10,"adopt":"10%","DeductionP":"扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容扣分内容"},
+				]}
+			]
+		}
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+	
+		//这是柱状图表
+		var myChart1=echarts.init(document.getElementById('main2'));
+		// 指定图表的配置项和数据
+        var option2 = {
+            
+            tooltip: {},
+            legend: {
+                data:['通过率']
+            },
+            xAxis: {
+            	type : 'category',
+            	axisTick : {show: false},
+                data: ["1","2","3","4","5","6","7"]//这是底面标识
+            },
+            yAxis: {},
+            series: [{
+                name: '通过率',
+                type: 'bar',
+                data: data.series//这是数据对应的
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart1.setOption(option2);
+		//这是第一个线路的
+		
+		//这是圆饼图的js
+		var myChart=echarts.init(document.getElementsByClassName('main1')[0]);
+		// 指定图表的配置项和数据
+		var jsonseries=[];
+		for(var j=0; j<data.list[0].detailed.length;j++){
+			jsonseries.push({"value":list[0].detailed[j].frequency,"name":list[0].detailed[j].title})
+		}
+
+        option1 = {
+		    series : [//圆饼数据表通过修改value决定画图大小,name决定名称
+		        {
+		            name: '访问来源',
+		            type: 'pie',
+		            radius: '55%',
+		            data:jsonseries
+		        }
+		    ]
+		};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option1);
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+	<head>
+		<meta charset="utf-8">
+		<title>科考三考试秘籍</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.css">
+			<script type="text/javascript">
+				applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+			</script>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">
+			<a id="back" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="title" class="mui-title">下拉刷新和上拉加载更多</h1>
+		</header>-->
+		<div class="mui-content">
+			
+			
+		</div>
+	</body>
+	<script src="js/mui.js"></script>
+	<script type="text/javascript">
+		//启用双击监听
+		mui.init({
+			gestureConfig:{
+				doubletap:true
+			},
+			subpages:[{
+				url:'cheats_sub.html',
+				id:'cheats_sub.html',
+				styles:{
+					top: '0',
+					bottom: '0px',
+				}
+			}],
+//			swipeBack:true,
+			keyEventBind: {
+				backbutton: true  //关闭back按键监听
+			},
+			beforeback: function() {//预加载返回
+					var ws = plus.webview.getWebviewById("cheats_sub.html");
+					plus.webview.close(ws);
+					return true;
+			}
+			
+			
+
+		});
+		
+		
+//		var contentWebview = null;
+//		document.querySelector('header').addEventListener('doubletap',function () {
+//			if(contentWebview==null){
+//				contentWebview = plus.webview.currentWebview().children()[0];
+//			}
+//			contentWebview.evalJS("mui('#pullrefresh').pullRefresh().scrollTo(0,0,100)");
+//		});
+	</script>
+
+</html>

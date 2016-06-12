@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>关于我们</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.mui-table-view-cell.mui-active>.mui-h5{
+    		color:#f67f12;
+    	}
+		.mui-content>ul li{
+			border-radius:4px ;
+			border-bottom: 1px solid #e0e0e0;
+			/*border-right: 1px solid #e0e0e0;*/
+			/*border-left: 1px solid #e0e0e0;*/
+		}
+		.mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-table-view-cell{
+			background-color:#fff;
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-table-view">
+			<div>
+				<img src="img/aboutTopImg.png" width="100%"/>
+				
+			</div>
+		</div>
+		<ul id="list" class="mui-table-view mui-table-view-chevron">
+	    	<li class="mui-table-view-cell mui-collapse" >
+	    		<a href="#"class="mui-h5" open-type="common">
+	    			新功能介绍
+	    		</a>
+	    	</li>
+	    	<li class="mui-table-view-cell mui-collapse" >
+	    		<a href="#"class="mui-h5" open-type="common">
+	    			意见反馈
+	    		</a>
+	    	</li>
+	    	<li class="mui-table-view-cell mui-collapse" >
+	    		<a href="#"class="mui-h5" open-type="common">
+	    			隐私及免责申明
+	    		</a>
+	    	</li>
+	    	<li class="mui-table-view-cell mui-collapse mui-active" >
+	    		<a href="#"class="mui-h5">
+	    			关于我们
+	    		</a>
+	    		<ul class="mui-table-view mui-table-view-chevron" style="">
+						<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+							<a  href="http://www.jkzpt.com" class="mui-navigate-right mui-h5" open-type="common">
+								<span class="mui-pull-left">官方网站:</span><span class="mui-h6 mui-pull-right">www.jkzpt.com</span>
+							</a>
+						</li> 
+						
+						<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+							<a  href="weixin://KCZX-JKZPT" class="mui-navigate-right mui-h5" open-type="common">
+								<span class="mui-pull-left">微信公众号:</span><span class="mui-h6 mui-pull-right">cdkczx-jkzpt</span>
+							</a>
+						</li>
+				</ul>
+	    	</li>
+	    	<li class="mui-table-view-cell mui-collapse mui-active" >
+	    		<a href="#"class="mui-h5">
+	    			联系我们
+	    		</a>
+	    		<ul class="mui-table-view mui-table-view-chevron" style="">
+						<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+							<a  href="tel:400-622-5551" class="mui-h5" open-type="common">
+								<span>联系电话:</span><span class="mui-h6">400-622-5551</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+							<a  href="#" class="mui-h5" open-type="common">
+								<span>公司地址:</span><span class="mui-h6">成都市锦江区下东大街216号喜年广场A座24层</span>
+							</a>
+						</li>
+				</ul>
+	    	</li>
+	    </ul>
+		
+		
+	</div>
+<script type="text/javascript" src="js/openNews.js"></script>	
+</body>
+</html>

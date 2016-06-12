@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>科目三主页面</title>
+   <link href="css/mui.css" rel="stylesheet"/>
+   <style>
+	   .mui-table-view-cell{
+	   	/*border-bottom: 1px solid #cccccc;*/
+	   }
+	   
+	   
+	   sup{
+	   	font-size: 9px;
+	   	color:red;
+	   	margin-right: -100%;
+	   }
+	   .dgczD a{
+	   		height: 60px;
+	   		line-height: 1;
+		    padding-top:0 !important;
+	   }
+	   .kqxy{
+	   	display: inline-block;
+		   margin-top: -8px;
+		   margin-left: -8px;
+	   	width: 42px;
+	   	height: 42px;
+	   	background: url("../icon/wish.png") no-repeat;
+	   	background-size: 100% 100%;
+	   }
+
+	   #sheet1 img{
+	   	position: relative;
+	   	top: 3px;
+	   }
+	   #setZu{
+	   	background: url("img/line1.png") no-repeat;
+	   	width: 100%;
+	   	background-size:100% 100%;
+	   }
+
+   </style>
+  	<script src="js/mui.js"></script>
+  	<script>
+  		applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+
+  	</script>
+  	
+</head>
+<body>
+<div id="pullrefresh" class="mui-scroll-wrapper">
+	<div id="main"  class="mui-content ">
+		<!--轮播-->
+
+		<script id="content" type="text/html">
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell" style="padding:0">
+					<a href="<%=slider[0].href%>" open-type="common">
+						<img src="<%=slider[0].imgSrc%>" width="100%" >
+					</a>
+				</div>
+			</div>
+			<!--<div id="slider" class="mui-slider">-->
+				<!--<div class="mui-slider-group mui-slider-loop">-->
+					<!--<%for(var i=0;i < slider.length;i++){%>-->
+					<!--<div class="mui-slider-item <%if(i==0){%>mui-slider-item-duplicate<%}%>">-->
+						<!--<a href="<%=slider[i].href%>" open-type="common">-->
+							<!--<img src="<%=slider[i].imgSrc%>">-->
+						<!--</a>-->
+					<!--</div>-->
+					<!--<%}%>-->
+
+					<!--<div class="mui-slider-item">-->
+						<!--<a href="<%=slider[0].href%>" open-type="common">-->
+							<!--<img src="<%=slider[0].imgSrc%>">-->
+						<!--</a>-->
+
+					<!--</div>-->
+					<!--<div class="mui-slider-item mui-slider-item-duplicate">-->
+						<!--<a href="<%=slider[1].href%>" open-type="common">-->
+							<!--<img src="<%=slider[1].imgSrc%>">-->
+						<!--</a>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="mui-slider-indicator">-->
+					<!--<%for(var i=0;i < slider.length;i++){%>-->
+					<!--<div class="mui-indicator <%if(i==0){%>mui-active<%}%>"></div>-->
+					<!--<%}%>-->
+
+				<!--</div>-->
+			<!--</div>-->
+			<!--科考三位置-->
+			<div class="mui-table-view" id="S3position">
+				<div class="mui-table-view-cell">
+					<a href="examinationposition.html?SelectDrivingSchoolActivity?examinationID=<%=examinationID%>" open-type="Jump"  class="mui-navigate-right mui-h5" >科目三考试位置: <span class=" mui-h5" style="color:#f67f12"><%=examination%></span></a>
+
+				</div>
+			</div>
+			<!--四个图标-->
+			<ul class="mui-table-view mui-grid-view mui-grid-12">
+				<%for(var i=0;i<Test.length;i++){%>
+				<li class="mui-table-view-cell mui-media mui-col-xs-3">
+					<a href="<%=Test[i].href%>" open-type="Jump">
+						<span class="icon"><img src="<%=Test[i].imgSrc%>" /></span>
+						<div class="mui-media-body"><%=Test[i].title%></div>
+					</a>
+				</li>
+				<%}%>
+
+			</ul>
+			<!--灯光操作等-->
+			<!--这要加个十字背景图片-->
+			<ul class="mui-table-view mui-grid-view mui-grid-12" id="setZu">
+				<%for(var i=0;i<operation.length;i++){%>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 dgczD">
+					<a href="<%=operation[i].href%>" open-type="Jump">
+						<span class="iconA"><img src="<%=operation[i].imgSrc%>" /></span><span class="mui-h5"><%=operation[i].title%></span>
+					</a>
+				</li>
+				<%}%>
+			</ul>
+			<!--学车视频-->
+
+
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell" id="Caringvideo">
+					<h5 >学车视频 <span class="mui-pull-right mui-h6" style="margin-top: 5px;">共  <%=Caringvideo.length*2%>个视频</span></h5>
+					<div>
+						<div class="mui-slider-group mui-slider-loop">
+
+							<div class="mui-slider-item <%if(i==0){%>mui-slider-item-duplicate<%}%>">
+								<ul class="mui-table-view mui-grid-view">
+									<%for(var j=0;j < Caringvideo[0].N.length;j++){%>
+									<li class="mui-table-view-cell mui-media mui-col-xs-6">
+										<a href="<%=Caringvideo[0].N[j].href%>" open-type="Jump">
+											<img class="mui-media-object" src="<%=Caringvideo[0].N[j].imgSrc%>">
+											<div class="mui-media-body"><%=Caringvideo[0].N[j].title%></div>
+										</a>
+
+									</li>
+									<%}%>
+
+								</ul>
+							</div>
+						</div>
+						<div class="mui-slider-indicator" style="position: static;background-color: #fff;">
+
+								<a href="#" class="mui-pull-right mui-h6">更多视频>></a>
+
+						</div>
+						<!--开始-->
+
+						<!--<div class="mui-slider-group mui-slider-loop">-->
+							<!--<%for(var i=0;i < Caringvideo.length;i++){%>-->
+							<!--<div class="mui-slider-item <%if(i==0){%>mui-slider-item-duplicate<%}%>">-->
+								<!--<ul class="mui-table-view mui-grid-view">-->
+									<!--<%for(var j=0;j < Caringvideo[i].N.length;j++){%>-->
+									<!--<li class="mui-table-view-cell mui-media mui-col-xs-6">-->
+										<!--<a href="<%=Caringvideo[i].N[j].href%>" open-type="Jump">-->
+											<!--<img class="mui-media-object" src="<%=Caringvideo[i].N[j].imgSrc%>">-->
+											<!--<div class="mui-media-body"><%=Caringvideo[i].N[j].title%></div>-->
+										<!--</a>-->
+
+									<!--</li>-->
+									<!--<%}%>-->
+
+								<!--</ul>-->
+							<!--</div>-->
+							<!--<%}%>-->
+
+							<!--<div class="mui-slider-item">-->
+								<!--<ul class="mui-table-view mui-grid-view">-->
+									<!--<li class="mui-table-view-cell mui-media mui-col-xs-6">-->
+										<!--<a href="<%=Caringvideo[0].N[0].href%>" open-type="Jump">-->
+											<!--<img class="mui-media-object" src="<%=Caringvideo[0].N[0].imgSrc%>">-->
+											<!--<div class="mui-media-body"><%=Caringvideo[0].N[0].title%></div>-->
+										<!--</a>-->
+									<!--</li>-->
+									<!--<li class="mui-table-view-cell mui-media mui-col-xs-6">-->
+										<!--<a href="<%=Caringvideo[0].N[1].href%>" open-type="Jump">-->
+											<!--<img class="mui-media-object" src="<%=Caringvideo[0].N[1].imgSrc%>">-->
+											<!--<div class="mui-media-body"><%=Caringvideo[0].N[1].title%></div>-->
+										<!--</a>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</div>-->
+							<!--&lt;!&ndash;结尾&ndash;&gt;-->
+							<!--<div class="mui-slider-item mui-slider-item-duplicate">-->
+								<!--<ul class="mui-table-view mui-grid-view">-->
+									<!--<li class="mui-table-view-cell mui-media mui-col-xs-6">-->
+										<!--<a href="<%=Caringvideo[1].N[0].href%>" open-type="Jump">-->
+											<!--<img class="mui-media-object" src="<%=Caringvideo[1].N[0].imgSrc%>">-->
+											<!--<div class="mui-media-body"><%=Caringvideo[1].N[0].title%></div>-->
+										<!--</a>-->
+									<!--</li>-->
+									<!--<li class="mui-table-view-cell mui-media mui-col-xs-6">-->
+										<!--<a href="<%=Caringvideo[1].N[1].href%>" open-type="Jump">-->
+											<!--<img class="mui-media-object" src="<%=Caringvideo[1].N[1].imgSrc%>">-->
+											<!--<div class="mui-media-body"><%=Caringvideo[1].N[1].title%></div>-->
+										<!--</a>-->
+									<!--</li>-->
+								<!--</ul>-->
+							<!--</div>-->
+						<!--</div>-->
+						<!--<div class="mui-slider-indicator" style="position: static;background-color: #fff;">-->
+							<!--<span class="mui-action mui-action-previous mui-icon mui-icon-back"></span>-->
+							<!--<div class="mui-number">-->
+								<!--<span>1</span> / <%=Caringvideo.length%>-->
+							<!--</div>-->
+							<!--<span class="mui-action mui-action-next mui-icon mui-icon-forward"></span>-->
+						<!--</div>-->
+					</div>
+				</div>
+			</div>
+			<!--考前许愿-->
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell">
+
+					<a href="wish.html?MakeWishActivity" open-type="Jump">
+						<h5 style="line-height: 2;"><span class="kqxy mui-pull-left"></span> 考前许愿 <apan class="mui-h6 mui-pull-right" style="margin-top: 3px;">据说,在这里许过愿的人都考过了~</apan></h5>
+					</a>
+				</div>
+			</div>
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell">
+					<a href="#">
+						<h5 class="mui-pull-left">驾考圈-科目三 </h5>
+						<span class="mui-h6 mui-pull-right" id="S3ParticipationNum" style="position: relative;top: 5px;">参与人数<%=participants%></span>
+					</a>
+				</div>
+			</div>
+			<ul class="mui-table-view mui-grid-view mui-grid-12"id="S3Participation">
+				<%
+				 var n=friends.length>6 ? 6 : friends.length;
+				for(var i=0;i < n;i++){%>
+				<li class="mui-table-view-cell mui-media mui-col-xs-2">
+					<a href="<%=friends[i].href%>" open-type="Jump">
+						<img src="<%=friends[i].imgSrc%>" width="100%"/>
+					</a>
+				</li>
+				<%}%>
+
+			</ul>
+
+		</script>
+
+	</div>
+</div>
+
+		<!--<div class="mui-table-view">
+			<h5>驾培通,让驾考更轻松</h5>
+			
+		</div>-->
+
+
+	<script src="js/template-native.js"></script>
+	<script src="js/openNews.js"></script>
+	<script>
+		//绑定数据
+		var data={
+			"slider":[
+				{"href":"#","imgSrc":"img/01.png"},
+				{"href":"#","imgSrc":"img/02.png"},
+				{"href":"#","imgSrc":"img/03.png"},
+				{"href":"#","imgSrc":"img/04.png"}
+			],
+			"examination":"毛家弯考场",
+			"examinationID":"002132",
+			"Test":[
+				{"href":"examination.html?ExaminationActivity","imgSrc":"../icon/Trule.png","title":"考试规则"},
+				{"href":"teaching.html?TeachingActivity","imgSrc":"../icon/curriculum.png","title":"标准教学"},
+				{"href":"site.html?ExamSiteActivity","imgSrc":"../icon/Tsite.png","title":"考试场地"},
+				{"href":"cheats.html?ExamCheatsActivity","imgSrc":"../icon/TCheats.png","title":"考试秘籍"}
+			],
+			"operation":[
+				{"href":"lightoperation.html?DrivingSubjectThreeActivity?0?SingleOperationFragment&singleoperation.html?LightOperationFrgment&lightoperation.html?SimulateDrivingFragment&NoUrl?PracticeRecordsFragment&schoolrecord.html","imgSrc":"../icon/Loperation.png","title":"灯光操作"},
+				{"href":"singleoperation.html?DrivingSubjectThreeActivity?1?SingleOperationFragment&singleoperation.html?LightOperationFrgment&lightoperation.html?SimulateDrivingFragment&NoUrl?PracticeRecordsFragment&schoolrecord.html","imgSrc":"../icon/Single.png","title":"单项操作"},
+				{"href":"NoUrl?DrivingSubjectThreeActivity?2?SingleOperationFragment&singleoperation.html?LightOperationFrgment&lightoperation.html?SimulateDrivingFragment&NoUrl?PracticeRecordsFragment&schoolrecord.html","imgSrc":"../icon/SimulationT.png","title":"模拟考试"},
+				{"href":"schoolrecord.html?DrivingSubjectThreeActivity?3?SingleOperationFragment&singleoperation.html?LightOperationFrgment&lightoperation.html?SimulateDrivingFragment&NoUrl?PracticeRecordsFragment&schoolrecord.html","imgSrc":"../icon/record.png","title":"学车记录"}
+			],
+			"Caringvideo":[
+				{N:[
+					{"href":"video.html?VideoActivity","imgSrc":"img/cbd.jpg","title":"Color of SIP CBD"},
+					{"href":"video.html?VideoActivity","imgSrc":"img/yuantiao.jpg","title":"静静看这世界"}
+				]},
+				{N:[
+					{"href":"video.html?VideoActivity","imgSrc":"img/shuijiao.jpg","title":"幸福就是可以一起睡觉"},
+					{"href":"video.html?VideoActivity","imgSrc":"img/muwu.jpg","title":"静静的喝咖啡"}
+				]}
+			],
+			"participants":"3.8万",
+			"friends":[
+				{"href":"drivingring.html?DrivingCircleActivity","imgSrc":"img/headImg.png"},
+				{"href":"drivingring.html?DrivingCircleActivity","imgSrc":"img/headImg.png"},
+				{"href":"drivingring.html?DrivingCircleActivity","imgSrc":"img/headImg.png"},
+				{"href":"drivingring.html?DrivingCircleActivity","imgSrc":"img/headImg.png"},
+				{"href":"drivingring.html?DrivingCircleActivity","imgSrc":"img/headImg.png"},
+				{"href":"drivingring.html?DrivingCircleActivity","imgSrc":"img/headImg.png"}
+			]
+
+		};
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+		//这开始下拉刷新
+		mui.init({
+			 gestureConfig:{
+			   tap: true, //默认为true
+			   doubletap: true, //默认为false
+			   longtap: true, //默认为false
+			   swipe: true, //默认为true
+			   drag: true //默认为true
+			  },
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+
+					callback: downRefresh1
+				}
+
+			}
+
+		});
+
+		function downRefresh1(){
+			alert("向下");
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+		}
+	//这结束
+
+
+		var gallery = mui('#slider');
+		gallery.slider({
+		  interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+		}); 
+		
+		
+	</script>
+</body>
+</html>

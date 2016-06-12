@@ -1,0 +1,51 @@
+﻿{"list":[{
+  "Code": "003001",
+  "ParentCode": "003",
+  "CnTitle": "桑塔纳",
+  "EnTitle": "Santana",
+  "Key": "CarMode",
+  "Tag": "",
+  "Image": null,
+  "Extend": null
+},
+{
+  "Code": "003002",
+  "ParentCode": "003",
+  "CnTitle": "捷达(老)",
+  "EnTitle": "Jetta(O)",
+  "Key": "CarMode",
+  "Tag": "",
+  "Image": null,
+  "Extend": null
+},
+{
+  "Code": "003003",
+  "ParentCode": "003",
+  "CnTitle": "捷达(新)",
+  "EnTitle": "Jatta(N)",
+  "Key": "CarMode",
+  "Tag": "",
+  "Image": null,
+  "Extend": null
+},
+{
+  "Code": "003004",
+  "ParentCode": "003",
+  "CnTitle": "爱丽舍",
+  "EnTitle": "Elysee",
+  "Key": "CarMode",
+  "Tag": "",
+  "Image": null,
+  "Extend": null
+},
+{
+  "Code": "003005",
+  "ParentCode": "003",
+  "CnTitle": "比亚迪F3",
+  "EnTitle": "BYD F3",
+  "Key": "CarMode",
+  "Tag": "",
+  "Image": null,
+  "Extend": null
+}]
+}

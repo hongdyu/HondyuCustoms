@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>考试位置1</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/mui.indexedlist.css"/>
+    <style>
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+		}
+		.mui-bar {
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+    	#reMenCity{
+    		padding: 5px;
+    	}
+    	#reMenCity ul{
+    		list-style: none;
+			margin: 0;
+    		
+    	}
+    	#reMenCity ul li{
+    		margin: 5px;
+    	}
+		ol{
+			 background-color: #e0e0e0;
+		}
+		ol li{
+			background-color: #fff;
+			border-right: 1px solid #e0e0e0;
+			border-left: 1px solid #e0e0e0;
+			border-bottom: 1px solid #e0e0e0;
+			border-radius: 4px;
+		}
+		.CityBtn{
+			color:#fff;
+			padding: 3px 10px;
+			border-radius: 3px;
+			background-color: #5480d8;
+		}
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+  
+  		applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+
+  	
+      	mui.init();
+    </script>
+</head>
+<body>
+<div class="mui-content" id="main">
+	<script id="content" type="text/html">
+		<div class="mui-table-view" id="headTop">
+			<div class="mui-table-view-cell">
+				<h5 class="mui-pull-left">当前位置: <span id="city" style="color:#f67f12"><%=City%></span></h5>
+				<h5 style="color:#5480d8" class="mui-pull-right">GPS定位城市: <a href="examinationposition2.html?cityID=628100" id="GPS_City" class="CityBtn" style="background-color: #f67f12;">成都</a></h5>
+			</div>
+			<div class="mui-table-view-cell" id="reMenCity">
+				热门城市:
+				<ul>
+					<%for(var i=0;i < Hot.length;i++){%>
+					<li class="mui-pull-left"><a href="examinationposition2.html?cityID=<%=Hot[i].Code%>" open-type='common' class="mui-h5 CityBtn "><%=Hot[i].CnTitle%></a></li>
+					<%}%>
+				</ul>
+			</div>
+			<div class="clear" style="clear:both"></div>
+		</div>
+		<div id='list' class="mui-indexed-list">
+			<div id="search" class="mui-indexed-list-search mui-input-row mui-search">
+				<input type="search"  class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索城市">
+			</div>
+			<div class="mui-indexed-list-bar">
+				<%for(var i=0;i < All.length;i++){%>
+				<a><%=All[i].Tag%></a>
+				<%}%>
+			</div>
+			<div class="mui-indexed-list-alert"></div>
+			<div class="mui-indexed-list-inner">
+				<div class="mui-indexed-list-empty-alert">没有数据</div>
+				<ul id="cityUL" class="mui-table-view">
+					<%for(var i=0;i<All.length;i++){%>
+					<li data-group="<%=All[i].Tag%>" class="mui-table-view-divider mui-indexed-list-group"><%=All[i].Tag%></li>
+						<%for(var j=0;j < All[i].Items.length;j++){%>
+						<li data-value="<%=All[i].Items[j].Code%>" data-tags="<%=All[i].Items[j].EnTitle%>" class="mui-table-view-cell mui-indexed-list-item"><%=All[i].Items[j].CnTitle%></li>
+						<%}%>
+					<%}%>
+				</ul>
+			</div>
+		</div>
+
+
+	</script>
+
+		
+	</div>
+
+	<script src="js/openNews.js"></script>
+	<script src="js/template-native.js"></script>
+	<script src="js/mui.indexedlist.js"></script>
+	<script type="text/javascript">
+		//绑定城市
+
+		mui.getJSON("js/city.data",null,function(data){
+			var html = template('content', data);
+			document.getElementById('main').innerHTML = html;
+			init();
+		});
+
+		function init(){
+			var header = document.getElementById("headTop");
+			var list = document.getElementById('list');
+//			console.log(header)
+			//calc hieght
+//			console.log(header.offsetHeight)
+			list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+			//create
+			window.indexedList = new mui.IndexedList(list);
+
+
+			mui("#cityUL").on("tap","li",function(){
+				var cityID=this.getAttribute("data-value");
+				var href="examinationposition2.html?cityID="+cityID;
+				window.location.href=href;
+			})
+		}
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>我的资料</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.mui-input-group .mui-input-row{
+    		height: 50px;
+    		line-height: 45px;
+    	}
+    </style>
+    <script type="text/javascript">
+    	applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+    </script>
+</head>
+<body>
+<!--这个应该没有使用,作为备用html-->
+	<div  class="mui-content">
+		<form id="regForm" class="mui-input-group" action="#" onclick="return p;">
+			<div class="mui-input-row mui-table-view" id="headerImg">
+				<!--有问题?????????????????????????-->
+				<label class="mui-h5">头像</label>
+				<a href="#" style="float:right;margin-top: 2px; margin-right: 40px;" class="mui-navigate-right"><img src="img/headImg.png" id="headerImgIcon" alt=""style="height:40px ;"/></a>
+				
+			</div>
+			<div class="mui-input-row">
+				<label class="mui-h5">昵称</label>
+				
+				<input type="text" id="useName" class="mui-input-clear" style="text-align:right;padding-right: 40px;" placeholder="请输入昵称">
+			</div>
+			<div class="mui-input-row" style="padding-right:10px">
+				<label class="mui-h5">性别</label>
+				<select class="" id="sex" style="text-align:right;">
+					<option value="0">男</option>
+					<option value="1">女</option>
+				</select>
+			</div>
+			<div class="mui-button-row">
+				<button id='reg' class="mui-btn mui-btn-primary">提交</button>&nbsp;&nbsp;
+				<button id="reset" class="mui-btn mui-btn-primary" type="reset">重置</button>
+			</div>
+		</form>
+
+	</div>
+	<script type="text/javascript" src="js/openNews.js"></script>
+	<script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	var headerImgIcon=document.getElementById("headerImgIcon");
+      	var headerImg=document.getElementById("headerImg");
+      	var p;
+      	var fileImg;
+		function uploadPics(url){//将图片转化为二进制流
+//			ImgFile.value=url;
+			var img=new Image();
+			img.src=url;
+			img.onload=function(){
+				var that=img;
+				var w=that.width;
+				var h=that.height;
+				var scale=w/h;
+				w=320||w;
+				h=w/scale;
+				var canvas=document.createElement('canvas');
+				var ctx=canvas.getContext("2d");
+				canvas.width=w;
+				canvas.height=h;
+				
+				ctx.drawImage(that,0,0,w,h);
+				var base64=canvas.toDataURL("image/png",1||0.8);
+//				alert(base64)
+				fileImg=base64;
+				headerImgIcon.src=base64;
+			}
+			
+		}
+		mui.plusReady(function(){
+			headerImg.addEventListener("tap",function(){
+				alert("选择图片");
+				uploadPics(url);//图片二进制
+				
+			})
+		})
+      	mui("#regForm").on('tap','#reg',function(){
+      		alert("提交")
+      	})
+    </script>
+</body>
+</html>

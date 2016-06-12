@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest"> 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>发布话题</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div class="mui-content">
+		<input type="hidden" id="imgBased"name="File" />
+		<form class="mui-input-group">
+			<div class="mui-input-row">
+				<label>话题:</label>
+				<input type="text" name="title" id='titleTop' placeholder="普通输入框">
+			</div>
+			<div class="mui-input-row" style="margin: 10px 5px; height: auto;">
+				<label>详细描述:</label>
+				<textarea rows="5" name="info" placeholder="详细描述"></textarea>
+			</div>
+			<div class="mui-input-row">
+				<label>图片:</label>
+				<input type="text" id="ImgUpload"  placeholder="选择图片或拍照">
+				
+			</div>
+			<div class="mui-button-row">
+				<button class="mui-btn mui-btn-primary" id="Release" onclick="return false;">确认发布</button>&nbsp;&nbsp;
+				<button class="mui-btn mui-btn-primary" type="reset" >重置</button>
+			</div>
+		</form>
+		<div id="preview" class="mui-table-view" style="width: 100%;text-align: center;">
+			<img src="" id="previewImg"/>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="js/openNews.js"></script>
+	<script>
+		var imgPath=''; 
+		var ImgFile=document.getElementById("ImgUpload");
+		var file=document.getElementById("imgBased");
+		var previewImg=document.getElementById("previewImg");
+		var fileImg;
+		function uploadPics(url){//将图片转化为二进制流
+			ImgFile.value=url;
+			var img=new Image();
+			img.src=url;
+			img.onload=function(){
+				var that=img;
+				var w=that.width;
+				var h=that.height;
+				var scale=w/h;
+				w=320||w;
+				h=w/scale;
+				var canvas=document.createElement('canvas');
+				var ctx=canvas.getContext("2d");
+				canvas.width=w;
+				canvas.height=h;
+				
+				ctx.drawImage(that,0,0,w,h);
+				var base64=canvas.toDataURL("image/png",1||0.8);
+//				alert(base64)
+				fileImg=base64;
+				previewImg.src=base64;
+			}
+			
+		}
+		mui(".mui-content").on("tap","#ImgUpload",function(){
+			alert("选择图片")
+			uploadPics(imgPath);//将图片转化Base64格式
+				
+		})
+		mui(".mui-content").on("tap","#Release",function(){
+			alert("发送");
+			//提交数据并跳转页面
+			var data=[{id:'1213',UserId:'dfksjfkdsf'}];
+	//					alert(data[0].UserId);
+						if(data){
+							mui.openWindow({
+								id:data[0].id,
+								url:'topicdetail.html',
+								extras:{
+									setStyle:data[0].UserId
+								},
+	//							show: {
+	//								aniShow: aniShow
+	//							},
+								waiting: {
+									autoShow: false
+								}
+							})
+						}
+		})
+	
+		
+		
+	</script>
+</body>
+</html>

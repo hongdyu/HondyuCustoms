@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>考试规则</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.mui-table-view-cell.mui-active>.mui-h5{
+    		color:#f67f12;
+    	}
+		.mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-table-view-cell{
+			background-color:#fff;
+		}
+		ul li{
+			border-radius:4px ;
+			border-bottom: 1px solid #e0e0e0;
+			/*border-right: 1px solid #e0e0e0;*/
+			/*border-left: 1px solid #e0e0e0;*/
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+	<!--这是页面主体-->
+<div id="main" class="mui-content">
+	<script id="content" type="text/html">
+			<div class="TopTitle" style="padding: 10px;">
+				<p style="font-size: 12px;">
+					<span class="time"><%=time%></span>&nbsp;
+					<span class="source">摘自<%=address%></span>
+					<span class="author mui-pull-right" style="color:#f67f12"><%=company%></span>
+				</p>
+			</div>
+
+			<ul id="list" class="mui-table-view mui-table-view-chevron">
+				<%for(var i=0;i < list.length;i++ ){%>
+				<li class="mui-table-view-cell mui-collapse <%if(i==0){%>mui-active<%}%>" >
+					<a class="mui-navigate-right mui-h5" href="#">
+						<%=list[i].title%>
+					</a>
+
+					<ul class="mui-table-view mui-table-view-chevron" style="">
+
+						<%for(var j=0;j < list[i].c.length;j++){%>
+						<li class="mui-table-view-cell mui-media" style="padding-left:23px;padding-right: 40px;">
+							<a  href="#" open-type="common">
+								<h5><%=j+1%>、<%=list[i].c[j].title%></h5>
+								<p>
+									<%if(list[i].c[j].imgSrc!=""){%>
+									<img class="mui-media-object mui-pull-left" src="<%=list[i].c[j].imgSrc%>">
+									<%}%>
+								<div class="mui-media-body">
+									<p class='mui-ellipsis-2'><%=list[i].c[j].content%></p>
+								</div>
+								</p>
+							</a>
+						</li>
+						<%}%>
+					</ul>
+
+				</li>
+				<%}%>
+			</ul>
+	</script>
+
+	</div>
+	<script src="js/template-native.js"></script>
+	<script src="js/openNews.js"></script>
+	<script>
+		//绑定数据
+		var data={
+			"time":"2015年12月31日",
+			"address":"网络",
+			"company":"成都科创智享科技有限公司",
+			list:[
+				{"title":"一、科目三介绍","c":[
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"阶段目标","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试内容","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"}
+				]},
+				{"title":"二、考试规则","c":[
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"阶段目标","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试内容","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"}
+				]},
+				{"title":"三、合格标准","c":[
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"阶段目标","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试内容","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"}
+				]},
+				{"title":"四、考试流程","c":[
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"阶段目标","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试内容","imgSrc":"img/shuijiao.jpg","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"},
+					{"title":"考试要求","imgSrc":"","content":"考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求考求考试要求考试要求考试要求考试要求考试要求考试要求考求考试要求考试要求"}
+				]}
+			]
+		};
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+		var aniShow = "pop-in";
+			 //只有ios支持的功能需要在Android平台隐藏；
+			if (mui.os.android) {
+				var list = document.querySelectorAll('.ios-only');
+				if (list) {
+					for (var i = 0; i < list.length; i++) {
+						list[i].style.display = 'none';
+					}
+				}
+				//Android平台暂时使用slide-in-right动画
+				if(parseFloat(mui.os.version)<4.4){
+					aniShow = "slide-in-right";
+				}
+			}
+			
+	</script>
+</body>
+</html>

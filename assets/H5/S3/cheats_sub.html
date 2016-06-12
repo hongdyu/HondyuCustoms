@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+
+	<head>
+		<meta charset="utf-8">
+		<title>科考三考试秘籍list</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.css">
+			<style>
+				sup{
+					color:red;
+				}
+
+				ul li{
+					border-radius:4px ;
+					border-bottom: 1px solid #e0e0e0;
+					border-right: 1px solid #e0e0e0;
+					border-left: 1px solid #e0e0e0;
+				}
+				.mui-table-view{
+					background-color: #e0e0e0;
+				}
+				.mui-table-view-cell{
+					background-color:#fff;
+				}
+			</style>
+			<script type="text/javascript">
+				applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+			</script>
+	</head>
+
+	<body>
+		<!--下拉刷新容器-->
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul id="list" class="mui-table-view">
+					<script id="content" type="text/html">
+						<%for(i=0;i<list.length ; i++){%>
+							<li class="mui-table-view-cell mui-media">
+								<a href="cheatsinfo.html?newsNum=<%=list[i].ID%>" open-type="common">
+									<img class="mui-media-object mui-pull-right" src="img/shuijiao.jpg">
+									<div class="mui-media-body">
+										<h5><%=list[i].title%><%=i%>
+											<%if(list[i].newId==1){%>
+											<sup>new</sup>
+											<%}%>
+										</h5>
+										<p class='mui-ellipsis'><%=list[i].content%></p>
+										<p style="color:#5480d8"><span style="color:#f67f12;"><%=list[i].headcount%></span>人看过</p>
+									</div>
+								</a>
+							</li>
+						<%}%>
+					</script>
+					<!--<li class="mui-table-view-cell mui-media">-->
+						<!--<a href="cheatsinfo.html?newsNum=01" open-type="common">-->
+							<!--<img class="mui-media-object mui-pull-right" src="img/shuijiao.jpg">-->
+							<!--<div class="mui-media-body">-->
+								<!--<h5>幸福 <sup>new</sup></h5>-->
+								<!--<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>-->
+								<!--<p style="color:#5480d8"><span style="color:#f67f12;">21937</span>人看过</p>-->
+							<!--</div>-->
+						<!--</a>-->
+					<!--</li>-->
+
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script src="js/template-native.js"></script>
+		<script src="js/openNews.js"></script>
+		<script>
+
+			//绑定数据
+			//这是json数据
+			var data={
+				list:[
+					{"ID":"0001","title":"幸福","newId":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","headcount":1234},
+					{"ID":"0002","title":"幸福","newId":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","headcount":1234},
+					{"ID":"0003","title":"幸福","newId":0,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","headcount":1234},
+					{"ID":"0004","title":"幸福","newId":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","headcount":1234},
+					{"ID":"0005","title":"幸福","newId":0,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","headcount":1234},
+					]
+			}
+
+			var html = template('content', data);
+			document.getElementById('list').innerHTML = html;
+			//绑定数据
+
+
+
+			var obj="<a href=\"#\" open-type=\"common\">"+
+						"<img class=\"mui-media-object mui-pull-right\" src=\"img/shuijiao.jpg\">"+
+							"<div class=\"mui-media-body\">"+
+								"<h5>幸福 <sup>new</sup></h5>"+
+								"<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>"+
+								"<p style=\"color:#5480d8\"><span style=\"color:#f67f12;\">21937</span>人看过</p>"
+							"</div></a>";
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						
+						callback: downRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						contentnomore: '没有更多数据了', 
+						callback: upRefresh
+					}
+				},
+				
+				
+			});
+			
+			
+//			mui.back=function(){
+//				history.go(-1);
+//			}
+			//这个要删除
+			function downRefresh(){
+				pulldownRefresh(obj);
+			}
+			function upRefresh(){
+				pullupRefresh(obj);
+			}
+			
+			if (mui.os.plus) {
+				mui.plusReady(function() {
+					setTimeout(function() {
+						mui('#pullrefresh').pullRefresh().pullupLoading();
+					}, 1000);
+
+				});
+			} else {
+				mui.ready(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				});
+			}
+			
+
+		</script>
+	</body>
+
+</html>

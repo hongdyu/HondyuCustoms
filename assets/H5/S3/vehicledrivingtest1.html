@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <!--ajax跨域-->
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta http-equiv="content-security-policy">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>驾考车型2</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="main" class="mui-content">
+    <script id="content" type="text/html">
+        <div class="mui-table-view" style="overflow: hidden;">
+            <h4 style="text-align: center;line-height: 2;">请选择车型</h4>
+        </div>
+        <ul class="mui-table-view mui-grid-view mui-grid-12">
+            <%for(var i=0;i < list.length;i++){%>
+            <li class="mui-table-view-cell mui-media mui-col-xs-3 parameter" data-title="<%=list[i].Code%>">
+                <%if(list[i].Image!=null){%>
+                <img src="<%=list[i].Image%>" width="80%" alt=""/>
+                <%}else{%>
+                <img src="img/u65_03.png" width="80%" alt=""/>
+                <%}%>
+                <div class="mui-media-body"><%=list[i].CnTitle%></div>
+            </li>
+            <%}%>
+        </ul>
+    </script>
+
+</div>
+<script src="js/template-native.js"></script>
+<script src="js/cache.js"></script>
+<script>
+    mui.ajax("js/Models.json",{
+        data:{
+            key:'Article',
+            contain:''
+        },
+        dataType:'json',//服务器返回json格式数据
+        type:'get',//HTTP请求类型
+        timeout:10000,//超时时间设置为10秒；
+        success:function(data){
+            var html = template('content', data);
+            document.getElementById('main').innerHTML = html;
+        },
+        error:function(xhr,type,errorThrown){
+            console.log(xhr);
+            //异常处理；
+            console.log(type);
+            console.log(errorThrown);
+        }
+    });
+
+    var parameter1=GetRequest().ID;//获取第一个参数
+
+    //绑定数据
+
+
+
+
+    //参数
+
+    mui("#main").on("tap",".parameter",function(){
+        var parameter2=this.getAttribute("data-title");
+        var obj='{"drivingLicenseType":'+parameter1+',"CarMode":'+parameter1+'}';
+//        var obj="悲剧"
+//        alert(obj);
+        window.DrivingExamCarModelActivity .setDrivingExamCarType(obj);
+     })
+    //
+
+
+
+</script>
+</body>
+</html>

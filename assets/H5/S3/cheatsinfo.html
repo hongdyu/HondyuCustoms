@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>这是所有页面的详细页面</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	sup{
+    		color:red
+    	}
+		.aixin{
+
+			display: inline-block;
+			height: 30px;
+			padding-left: 28px;
+			line-height: 30px;
+			background: url("img/aixin.png") no-repeat;
+			background-size:100% 100%;
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    	applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+
+//		获取url传递的参数
+
+		function GetRequest() {
+			var url = location.search; //获取url中"?"符后的字串
+			var theRequest = new Object();
+			if (url.indexOf("?") != -1) {
+				var str = url.substr(1);
+				strs = str.split("&");
+				for(var i = 0; i < strs.length; i ++) {
+					theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+				}
+			}
+			return theRequest;
+		}
+		var parameterStr=GetRequest();
+//		console.log(parameterStr.newsNum);
+
+	</script>
+</head>
+<body>
+	<div id="main" class="mui-content">
+		<script id="content" type="text/html">
+			<div class="TopTitle" style="padding: 10px;">
+				<p style="font-size: 12px;">
+					<span class="time"><%=info[0].time%></span>&nbsp;
+					<span class="source">摘自<%=info[0].source%></span>
+					<span class="author mui-pull-right" style="color:#f67f12"><%=info[0].company%></span>
+				</p>
+			</div>
+			<div id='mainInfo' class="mui-table-view container mui-h5" style="padding:10px">
+				<%=info[0].content%>
+				<p>阅读<span><%=info[0].headcount%></span> <span></span><span><%=info[0].A%></span></p>
+			</div>
+		</script>
+		<!--<div class="TopTitle" style="padding: 10px;">-->
+	    	<!--<p style="font-size: 12px;">-->
+	    		<!--<span class="time">2015年12月31日</span>&nbsp;-->
+	    		<!--<span class="source">摘自网络</span>-->
+	    		<!--<span class="author mui-pull-right" style="color:#f67f12">成都科创智享科技有限公司</span>-->
+	    	<!--</p>-->
+	    <!--</div>-->
+	    <!--<div id='mainInfo' class="mui-table-view container mui-h5" style="padding:10px">-->
+	    	<!--这是内容-->
+	    	<!--<p>阅读<span>3981</span> <span></span><span>69</span></p>-->
+	    <!--</div>-->
+	   
+	</div>
+	<script src="js/template-native.js"></script>
+	<script>
+	//数据绑定
+	var data={
+		info:[{"time":"2015年12月31日","source":"网络","company":"科创智享科技有限公司","content":"内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容","headcount":21342,"A":64}]
+	}
+	var html = template('content', data);
+	document.getElementById('main').innerHTML = html;
+	</script>
+</body>
+</html>

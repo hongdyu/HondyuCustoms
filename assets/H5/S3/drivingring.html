@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>驾考圈</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/file.css"/>
+    <style>
+    
+			#headImg{
+				position: absolute;
+				bottom:40px;
+				left: 30px;
+			}
+			.blues{
+				color:#f67f12;
+			}
+		.mui-content-padded ul li{
+			border-radius:4px ;
+			border-bottom: 1px solid #e0e0e0;
+			/*border-right: 1px solid #e0e0e0;*/
+			/*border-left: 1px solid #e0e0e0;*/
+		}
+
+		.mui-content-padded .mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-content-padded .mui-table-view-cell{
+			background-color:#fff;
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+
+
+    </script>
+</head>
+<body>
+<div id="pullrefresh" class=" mui-scroll-wrapper">
+	<div id="main" class="mui-content">
+		<script id="content" type="text/html">
+
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell">
+					<a href="##" id="topBg">
+						<img width="100%" src="<%=topImg%>"/>
+					</a>
+					<a href="" id="headImg" open-type="common">
+						<img src="<%=headImg%>" alt=""/>
+						<p style="background-color: #8f8f94; color:#ffffff;height:24px;"><img src="<%=studentsLevel%>"/></p>
+					</a>
+				</div>
+			</div>
+
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell">
+					<h5 style="color:#f67f12;">驾考圈&nbsp;<p style="display: inline;color:#5480d8">参与人数<span class="blues"><%=participantsNum%></span>,话题<span class="blues"><%=topicsNum%></span></p></h5>
+					<button type="button" id="issue" class="mui-btn mui-btn-warning">
+						发布话题
+					</button>
+				</div>
+				<div id="Gallery" class="mui-slider mui-table-view-cell">
+					<div class="mui-slider-group">
+						<%for(var i=0 ; i < Release.length ; i++){%>
+						<div class="mui-slider-item">
+							<ul class="mui-table-view mui-grid-view mui-grid-12">
+								<%for(var j=0 ; j < Release[i].c.length ; j++){%>
+								<li class="mui-table-view-cell mui-media mui-col-xs-3">
+									<a href="" open-type="common">
+										<span class="icon"><img src="<%=Release[i].c[j].imgSrc%>" /></span>
+										<div class="mui-media-body">
+											<%=Release[i].c[j].title%>
+										</div>
+									</a>
+								</li>
+								<%}%>
+							</ul>
+
+						</div>
+						<%}%>
+					</div>
+					<div class="mui-slider-indicator" style="position: relative;top: 5px;">
+						<%for(var i=0;i < Release.length;i++){%>
+							<div class="mui-indicator <%if(i==0){%> mui-active <%}%>"></div>
+						<%}%>
+					</div>
+
+				</div>
+			</div>
+			<div id="segmentedControl" class="mui-segmented-control">
+				<%for(var i=0;i < List.length;i++){%>
+					<a class="mui-control-item <%if(i==0){%> mui-active <%}%>" href="#<%=List[i].hrefID%>">
+						<span class="mui-h5"><%=List[i].title%></span>
+					</a>
+				<%}%>
+			</div>
+			<div class="mui-content-padded" style="margin:1px">
+				<%for(var i=0;i < List.length;i++){%>
+				<div id="<%=List[i].hrefID%>" class="mui-control-content <%if(i==0){%> mui-active <%}%>">
+					<ul id="morefresh<%=i%>" class="mui-table-view">
+
+						<%for(var j=0;j < List[i].fresh.length;j++){%>
+						<li class="mui-table-view-cell mui-media">
+							<a href="topicdetail.html?ID=<%=List[i].fresh[j].ID%>" open-type="common">
+								<img class="mui-media-object mui-pull-left" src="<%=List[i].fresh[j].HeadImg%>">
+								<div class="mui-media-body">
+									<h5><%=List[i].fresh[j].nickname%>
+										<%if(List[i].fresh[j].recommend==1){%>
+										<span class="recommend2"></span>
+										<%}%>
+									</h5>
+									<p class='mui-ellipsis'><%=List[i].fresh[j].content%></p>
+									<p>
+										<span class="timer_01" style="float: left;"><%=List[i].fresh[j].time%> &nbsp;</span>
+										<span class="address_01" style="float: left;"><%=List[i].fresh[j].address%></span>
+
+										<span class="xiaoxi"><%=List[i].fresh[j].X%></span>
+										<span class="aixin"><%=List[i].fresh[j].A%></span>&nbsp;
+									</p>
+								</div>
+							</a>
+						</li>
+						<%}%>
+					</ul>
+					<ul  class="mui-table-view">
+						<li class="mui-table-view-cell mui-media">
+							<a href="#" class="more" data-title="1">
+								<h5 style="text-align: center;">点击更多>></h5>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<%}%>
+
+			</div>
+
+		</script>
+	</div>
+</div>
+<script src="js/openNews.js"></script>
+<script src="js/template-native.js"></script>
+<script type="text/javascript">
+	//绑定数据
+	//json数据从后台取此仅为实验数据
+	var data={
+		topImg:"img/shuijiao.jpg",
+		headImg:"img/headImg.png",
+		studentsLevel:"../icon/Level.png",
+		participantsNum:"3万",
+		topicsNum:"50万",
+		Release:[
+			{"c":[{"imgSrc":"../icon/goddess.png","title":"学车女神"},{"imgSrc":"../icon/redEnvelopes.png","title":"抢红包"},{"imgSrc":"../icon/spit.png","title":"吐槽驾校"},{"imgSrc":"../icon/Funny.png","title":"学车趣事"}]},
+			{"c":[{"imgSrc":"../icon/goddess.png","title":"学车女神"},{"imgSrc":"../icon/redEnvelopes.png","title":"抢红包"},{"imgSrc":"../icon/spit.png","title":"吐槽驾校"},{"imgSrc":"../icon/Funny.png","title":"学车趣事"}]},
+			{"c":[{"imgSrc":"../icon/goddess.png","title":"学车女神"},{"imgSrc":"../icon/redEnvelopes.png","title":"抢红包"},{"imgSrc":"../icon/spit.png","title":"吐槽驾校"},{"imgSrc":"../icon/Funny.png","title":"学车趣事"}]}
+		],
+		List:[
+			{"hrefID":"item1mobile","title":"精选话题","fresh":[
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称01","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称02","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称03","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称04","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称05","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+			]},
+			{"hrefID":"item2mobile","title":"开心一刻","fresh":[
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称11","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称12","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称13","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称14","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称15","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+			]},
+			{"hrefID":"item3mobile","title":"有惊无险","fresh":[
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称21","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称22","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称23","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称24","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称25","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+			]},
+			{"hrefID":"item4mobile","title":"学车囧事","fresh":[
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称31","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称32","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称33","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称34","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+				{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称35","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+			]}
+
+		]
+	}
+
+	var html = template('content', data);
+	document.getElementById('main').innerHTML = html;
+	//绑定数据结束
+	mui.init({
+		pullRefresh: {
+			container: '#pullrefresh',
+			down: {
+
+				callback: downRefresh
+			},
+
+		},
+
+	});
+	function downRefresh(){
+
+		alert("下拉刷新");
+		mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+	}
+
+		mui(".mui-content").on("tap",".more",function(){
+				var n=this.getAttribute("data-title");
+				var id="morefresh"+n;
+				var morefresh=document.getElementById(id).getElementsByTagName("li");
+				console.log(morefresh.length);
+				moreRefresh(n)//更多
+			})
+		
+		mui(".mui-content").on("tap","#issue",function(){
+//			alert("功能暂未开放!!")
+			mui.openWindow({
+				id: "issuetopic",
+				url: "issuetopic.html",
+				styles: "webview_style",
+				show: {
+					aniShow: aniShow
+				},
+				waiting: {
+					autoShow: false
+				}
+			});
+			
+			
+		})
+		mui(".mui-content").on("tap","#topBg",function(){
+			alert("更换背景图片");
+
+		})
+</script>
+</body>
+</html>

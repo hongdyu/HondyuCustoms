@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_qrcode_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="重新连接其他设备 >"
+            android:textColor="#0099FF"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imageview_qrcode_bitmap"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv_qrcode_result"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_main_imageview"
+            android:padding="2dp" />
+
+        <TextView
+            android:id="@+id/tv_device_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageview_qrcode_bitmap"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center_horizontal"
+            android:text="驾培通 CSC-6型"
+            android:textColor="#666"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_device_model"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Ver 4.12.09"
+            android:textColor="#666"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="30dp" >
+
+        <TextView
+            android:id="@+id/tv_product_introduce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="智培通 CSC-6 型产品功能介绍"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tv_product_introduce"
+            android:layout_marginTop="10dp"
+            android:text="        智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。智培通 CSC-6 型产品是一款针对驾校学车学员的考试神器。"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+</LinearLayout>

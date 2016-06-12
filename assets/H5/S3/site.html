@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>考试场地</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.doubletapImg{
+    		width: 160px;
+    		height: 100px;
+    	}
+    	.mui-table-view-cell.mui-active>.mui-h5{
+    		color:#f67f12;
+    	}
+		ul li{
+			border-radius:4px ;
+			border-bottom: 1px solid #e0e0e0;
+			/*border-right: 1px solid #e0e0e0;*/
+			/*border-left: 1px solid #e0e0e0;*/
+		}
+		.mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-table-view-cell{
+			background-color:#fff;
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init({
+      		gestureConfig:{
+			   tap: true, //默认为true
+			   doubletap: true, //默认为false
+			   longtap: true, //默认为false
+			   swipe: true, //默认为true
+			   drag: true //默认为true
+			  }
+
+      	});
+    </script>
+</head>
+<body>
+<div id="main" class="mui-content">
+	<script id="content" type="text/html">
+		<div class="TopTitle" style="padding: 10px;">
+			<p style="font-size: 12px;">
+				<span class="time"><%=time%></span>&nbsp;
+				<span class="source">摘自<%=address%></span>
+				<span class="author mui-pull-right" style="color:#f67f12"><%=admin%></span>
+			</p>
+		</div>
+		<ul id="list" class="mui-table-view mui-table-view-chevron">
+			<li class="mui-table-view-cell mui-collapse mui-active" >
+				<a class="mui-navigate-right mui-h5" href="#">
+					<%=examination[0].title%>
+				</a>
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 30px;">
+						<div class="mui-media-large" style="float: left;display: inline;"><img src="<%=examination[0].imgSrc%>" alt="" class="mui-media-object" style="margin-right:10px"/></div>
+						<p class="mui-ellipsis-2" style="display: inline;">
+							<%=examination[0].content%>
+						</p>
+					</li>
+				</ul>
+			</li>
+
+			<li class="mui-table-view-cell mui-collapse" >
+				<a class="mui-navigate-right mui-h5" href="#">
+					<%=TopView[0].title%>
+				</a>
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 30px;">
+						<div class="mui-media-large" style="float: left;display: inline;"><img src="<%=TopView[0].imgSrc%>" alt="" style="margin-right:10px;"class="doubletapImg"/></div>
+						<p class="mui-ellipsis-2" style="display: inline;">
+							<%=TopView[0].content%>
+						</p>
+					</li>
+				</ul>
+			</li>
+			<li class="mui-table-view-cell mui-collapse" >
+				<a class="mui-navigate-right mui-h5" href="#">
+					<%=video[0].title%>
+				</a>
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+						<div class="mui-media-large">
+							<a href="<%=video[0].href%>" open-type="common" style="display: block; text-align: center;" class="videoImg" data_url="http://player.56.com/v_MTIxNzQxMDE5.swf"><img src="<%=video[0].imgSrc%>"/></a>
+							<p>详解: <span class="mui-ellipsis-2"><%=video[0].content%></span></p>
+						</div>
+					</li>
+				</ul>
+			</li>
+			<li class="mui-table-view-cell mui-collapse" >
+				<a class="mui-navigate-right mui-h5" href="<%=commentary[0].href%>">
+					<%=commentary[0].title%>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-collapse" >
+				<a id="Map_bus" class="mui-navigate-right mui-h5"  data-title="长征驾校考场" href="<%=map[0].href%>">
+					<%=map[0].title%>
+				</a>
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell" style="padding-left:23px;padding-right: 40px;">
+						<div>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</script>
+
+</div>
+	<script src="js/template-native.js"></script>
+	<script src="js/openNews.js"></script>
+	<script>
+		//绑定数据
+		var data={
+			"time":"2015年12月31日",
+			"address":"网络",
+			"admin":"成都科创智享科技有限公司",
+			"examination":[{"title":"1、考场介绍","imgSrc":"img/shipingtupian.png","content":"考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍绍考场介绍考场介绍考介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍..."}],
+			"TopView":[{"title":"2、考场俯视图","imgSrc":"img/shipingtupian.png","content":"考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍绍考场介绍考场介绍考介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍考场介绍..."}],
+			"video":[{"title":"3、考场视频","href":"#","imgSrc":"img/shipingtupian.png","content":'内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容内容详解内详解内容详解内容详解内容详解......'}],
+			"commentary":[{"title":"4、考场解说","href":"#"}],
+			"map":[{"title":"5、公交线路(位置地图)","href":"#"}]
+		};
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+	//2.里的图片的双击事件
+	 	mui("#list").on("doubletap",".doubletapImg",function(){
+			alert(1);
+		})
+	 	//3里 的视频点击事件
+	 	mui("#list").on("tap",".videoImg",function(){
+			alert(2)
+		
+		})
+		//地图
+		var Map_bus=document.getElementById("Map_bus");
+		Map_bus.addEventListener("tap",function(){
+			var h=Map_bus.getAttribute("href");
+			var str=Map_bus.getAttribute("data-title");
+			window.location.href=h+encodeURIComponent(str);
+		})
+	</script>
+</body>
+</html>

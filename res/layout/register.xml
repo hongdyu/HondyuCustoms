@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <EditText
+        android:id="@+id/et_shortMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:hint="请输入您要发送的短信内容" />
+
+    <Button
+        android:id="@+id/btn_verificationCode"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/et_vertificate"
+        android:layout_alignParentRight="true"
+        android:text="验证码" />
+
+    <Button
+        android:id="@+id/btn_sendMsg"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/et_phone"
+        android:layout_alignParentRight="true"
+        android:text="发送短信" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/et_shortMsg"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="请输入电话号码"
+        android:inputType="phone" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/et_vertificate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/et_phone"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:hint="请输入验证码" />
+
+    <Button
+        android:id="@+id/btn_validateMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_vertificate"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:text="验证短信验证码" />
+
+</RelativeLayout>

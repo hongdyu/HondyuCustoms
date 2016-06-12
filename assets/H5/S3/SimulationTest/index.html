@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html manifest="/offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>模拟考试启动页</title>
+    <script src="../js/mui.js"></script>
+    <link href="../css/mui.css" rel="stylesheet"/>
+    <style>
+    	.main{
+    		width: 80%;
+    		margin: 0 auto;
+    		position: relative;
+    		top: 40px;
+    		border: 1px solid #0099ff;
+    		border-radius: 5px;
+    	}
+    	.top_main{
+    		position: relative;
+    		width: 100%;
+    		height: 60px;
+    		padding: 20px;
+    		border-bottom: 1px solid #0099ff;
+    	}
+    	#LaneLine{
+    		color:#003399;
+    	}
+    	#delBlueIcon{
+    		background: url("../img/delBlue.png") no-repeat;
+    		background-size:16px 16px;
+    		display: inline-block;
+    		width:16px;
+    		height: 16px;
+    		padding: 5px;
+    		position: absolute;
+    		top: 10px;
+    		right: 10px;
+    	}
+    	.mainInfo{
+    		margin-top: 20px;
+    	}
+    	.mainInfo ul{
+    		list-style: none;
+    		/*margin-top: 20px;*/
+    		margin:0;
+    		padding: 20px;
+    		width: 170px;
+    		margin: 0 auto;
+    	}
+    	.mainInfo ul li{
+    		height: 60px;
+    		line-height: 60px;
+    	}
+    	.mainInfo ul li input[type="checkbox"]{
+    		display: inline-block;
+    		width: 20px;
+    		height: 20px;
+    		position: relative;
+    		top: 3px;
+    		
+    	}
+    	.mainInfo ul li label{
+    		
+    	}
+    	.TestIcon{
+    		background-size:100% 100% ;
+    		display: inline-block;
+    		width: 20px;
+    		height: 20px;
+    		position: relative;
+    		top: 3px;
+    		margin-right: 3px;
+    	}
+    	.teachingModelIcon{
+    		background: url("../img/u392.png") no-repeat;
+    	}
+    	.RandomLightIcon{
+    		background: url("../img/u394.png") no-repeat;
+    		
+    	}
+    	.NightModeIcon{
+    		background: url("../img/u396.png") no-repeat;
+    		
+    	}
+    	.startDiv{
+    		margin: 30px auto;
+    		width: 81px;
+    	}
+    	#StartTest{
+    		border: none;
+    		background: url("../img/u385.png") no-repeat;
+    		background-size:81px 81px;
+    		display: inline-block;
+    		width: 81px;
+    		height: 81px;
+    		
+    		color:#fff;
+    		font-size: 16px;
+    		font-weight: bold;
+    	}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="main" class="mui-content" >
+		<script id="content" type="text/html">
+			<div class="main mui-table-view">
+				<div class="top_main">
+					<h4 id="LaneLine">线路:<%=Laneline%></h4>
+					<span id="delBlueIcon"></span>
+				</div>
+				<div class="mainInfo">
+					<ul>
+						<%for(var i=0;i<Info.length;i++){%>
+						<li>
+							<label for="teachingModel">
+								<input type="checkbox" id="<%=Info[i].id%>" name="<%=Info[i].name%>"/>
+								<span class=" TestIcon <%=Info[i].icon%>"></span><%=Info[i].title%>
+							</label>
+
+						</li>
+						<%}%>
+
+					</ul>
+					<div class="startDiv">
+						<button id="StartTest">开始<br/>考试</button>
+					</div>
+
+				</div>
+			</div>
+		</script>
+
+	</div>
+	<script src="../js/template-native.js"></script>
+<script src="../js/openNews.js"></script>
+<script type="text/javascript">
+	//绑定数据
+	var data={
+		"LaneLine":"毛家湾考场线路",
+		"Info":[
+			{"title":"教学模式","icon":"teachingModelIcon","id":"teachingModel","name":"teachingModel"},
+			{"title":"随机灯光","icon":"RandomLightIcon","id":"RandomLight","name":"RandomLight"},
+			{"title":"夜间模式","icon":"NightModeIcon","id":"NightMode","name":"NightMode"}
+		]
+	};
+	var html = template('content', data);
+	document.getElementById('main').innerHTML = html;
+	//绑定数据结束
+	var teachingModel=document.getElementById("teachingModel");
+	var RandomLight=document.getElementById("RandomLight");
+	var NightMode=document.getElementById("NightMode");
+	mui(".mui-content").on("tap","#StartTest",function(){
+		var n=judge();
+//		alert(n)
+//		alert("这是开始考试")
+		if(n){
+			mui.openWindow({//这是发送
+				url:"artificialJudgment.html?selft="+n+"&id=maojiawan",
+				id:'artificialJudgment',
+				styles:{},
+				extras:{
+					Choice:n,
+				},
+				waiting:{
+					autoShow:true,
+					title:"正在加载...",
+				}
+			})
+		}else{
+			alert("请选择至少一个项目")
+		}
+		
+	})
+	function judge(){//判断checkbox有几个选中
+		var num=null;
+		if(teachingModel.checked){
+			
+			if(RandomLight.checked){
+				
+				if(NightMode.checked){
+					
+					num="all";//全部选择
+				}else{
+					
+					num="Adjacent1";//第一个和第二个选择
+				}
+			}
+			else if(NightMode.checked){
+				
+				num="Separated";//第一个和第三个选择
+			}else{
+				num="one";//只选择第一个
+			}
+			
+		}
+		else if(RandomLight.checked){
+			
+			if(NightMode.checked){
+				
+				num="Adjacent2";//第二个和第三个选择
+			}else{
+				num="two";//只选择第二个
+			}
+		}
+		else if(NightMode.checked){
+			
+			num="three";//只选择第三个
+		}
+		
+		return num;
+		
+	}
+	var delBlueIcon=document.getElementById("delBlueIcon");
+	delBlueIcon.addEventListener("tap",function(){
+		
+		  var btn = ["确定","取消"];
+		  mui.confirm('确认关闭当前窗口？','Hello MUI',btn,function(e){
+		    if(e.index==0){
+		      alert("关闭按钮")
+		    }
+		  });
+	})
+</script>
+</body>
+</html>

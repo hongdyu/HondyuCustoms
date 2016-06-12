@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>教练</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.coachIcon{
+    		font-size:30px;
+    		margin-right: 5px;
+    		position: relative;
+    		top: 20px;
+    	}
+    	.mui-collapse{
+    		padding-right: 40px !important;
+    	}
+    	.iconOrangeCircular{
+    		background: url("img/u94.png") no-repeat;
+    		background-size:100% 100%;
+    		display: inline-block;
+    		width: 29px;
+    		height: 26px;
+    		color:#fff;
+    	}
+    	table thead th{
+    		text-align: center;
+    		line-height: 28px;
+    	}
+    	table tbody td{
+    		text-align: center;
+    		padding-top:5px;
+    	}
+    	
+    	.BlueBox{
+    		position: relative;
+    		background: url("img/u98.png") no-repeat;
+    		background-size:100% 100%;
+    		display: inline-block;
+    		width: 43px;
+    		height: 35px;
+    		line-height: 35px;
+    		
+    	}
+    	.OrangeBox{
+    		position: relative;
+    		background: url("img/u100.png") no-repeat;
+    		background-size:100% 100%;
+    		display: inline-block;
+    		width: 43px;
+    		height: 35px;
+    		line-height: 35px;
+    	}
+    	.grayBox{
+    		position: relative;
+    		background: url("img/u104.png") no-repeat;
+    		background-size:100% 100%;
+    		display: inline-block;
+    		width: 43px;
+    		height: 35px;
+    		line-height: 35px;
+    	}
+    	.Have{
+    		line-height: 1;
+    		padding-top: 5px;
+    		color:#000;
+    	}
+    	.RedOriginIcon{
+    		/*这是有消息时显示的小点*/
+    		display: inline-block;
+    		width: 6px;
+    		height: 6px;
+    		background: url("img/u199.png") no-repeat;
+    		background-size: 100% 100%;
+    		position: absolute;
+    		top: -2px;
+    		right: -2px;
+    		border-radius:3px ;
+    	}
+    	.iconTB{
+
+    		display: inline-block;
+    		width:43px;
+    		height: 43px;
+    		text-align: center;
+    		font-size:12px;
+    		line-height: 1;
+    		padding-top: 8px;
+    	}
+    	.waitIcon{
+    		background: url("img/u141.png") no-repeat;
+			background-size: 100% 100%;
+    		color:#000;
+    	}
+    	.mui-active>.waitIcon{
+    		background: url("img/u126.png") no-repeat;
+			background-size: 100% 100%;
+    		color:#fff;
+    	}
+    	.IsIcon{
+    		background: url("img/u128.png") no-repeat;
+			background-size: 100% 100%;
+    		color:#000;
+    	}
+    	.mui-active>.IsIcon{
+    		background: url("img/u74.png") no-repeat;
+			background-size: 100% 100%;
+    		color:#fff;
+    	}
+    	.CompletedIcon{
+    		background: url("img/u130.png") no-repeat;
+			background-size: 100% 100%;
+    		color:#cccccc;
+    	}
+    	.mui-active>.CompletedIcon{
+    		background: url("img/u145.png") no-repeat;
+			background-size: 100% 100%;
+    		color:#fff;
+    	}
+    	.CompletedImg{
+    		position: absolute; 
+    		width: 100%;
+    		height: 100%;
+    		opacity: 0.5; 
+    		top: 0; 
+    		left: 0;
+    		text-align: center;
+    	}
+    	.CompletedImg img{
+    		width: 150px;
+    		margin-top: 20px;
+    	}
+		.mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-table-view-cell{
+			border-radius: 4px;
+			border-bottom:1px solid  #e0e0e0;
+			background-color: #fff;
+
+		}
+    </style>
+
+</head>
+<body>
+<div id="pullrefresh" class="mui-scroll-wrapper">
+	<div class="mui-content">
+		<!--顶部选项卡-->
+		<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+			<a href="#item1mobile" class="mui-control-item mui-active">
+				<h5><span class="mui-icon mui-icon-contact-filled"></span>我的教练</h5>
+			</a>
+			<a href="#item2mobile" class="mui-control-item">
+				<h5><span  class="mui-icon mui-icon-chatboxes-filled"></span>我的预约  </h5>
+			</a>
+		</div>
+		<div class="mui-slider-group">
+			<!--内容-->
+			<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+				<!--我的教练-->
+				<ul class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell">
+						<h5>全部教练<span class="mui-h6">(2)</span></h5>
+					</li>
+					<li class="mui-table-view-cell mui-collapse mui-active">
+						<a href="#">
+							<img src="img/u41.png" class="mui-media-object mui-pull-left"/>
+							<div class="mui-media-body mui-pull-left mui-col-xs-7">
+								<h5>李教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+								<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+							</div>
+							<div class="mui-pull-right mui-col-xs-2" style='margin-right: 10px;'>
+								<span class="mui-icon mui-icon-phone-filled coachIcon"></span>
+								<span class="mui-icon mui-icon-chat coachIcon"></span>
+							</div>
+						</a>
+						<!--教练的工作安排-->
+						<ul class="mui-table-view mui-table-view-chevron">
+							<!--这是工作安排-->
+							<li class="mui-table-view-cell">
+								<h5>李教练未来的工作安排</h5>
+								<span class="mui-h6">上午:6点到12点,下午:12点18点,晚上18点到24点</span>
+							</li>
+							<li class="mui-table-view-cell">
+								<table class="mui-col-xs-12 WorkTable">
+									<thead>
+										<tr>
+											<th class="mui-col-xs-2"></th>
+											<th class="mui-col-xs-2"><span class="mui-h6 iconOrangeCircular">今日</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/2</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/3</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/4</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/5</span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="mui-h6">上午</span></td>
+											<td><span class="mui-h6 BlueBox">已满 <span class=""></span></span></td>
+											<td><span class="mui-h6 BlueBox">已满 <span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 BlueBox Have">科目二 80.00<span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 BlueBox Have">科目二 80.00<span class="RedOriginIcon"></span></td>
+											<td><span class="mui-h6 BlueBox">已满 <span class=""></span></span></td>
+										</tr>
+										<tr>
+											<td><span class="mui-h6">下午</span></td>
+											<td><span class="mui-h6 OrangeBox">已满 <span class=""></span></span></td>
+											<td><span class="mui-h6 OrangeBox">休息 <span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 OrangeBox Have">科目三 80.00<span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 OrangeBox Have">科目三 80.00<span class="RedOriginIcon"></span></td>
+											<td><span class="mui-h6 OrangeBox Have">科目三 80.00<span class=""></span></td>
+										</tr>
+										<tr>
+											<td><span class="mui-h6">晚上</span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a href="#">
+							<img src="img/u143.png" class="mui-media-object mui-pull-left"/>
+							<div class="mui-media-body mui-pull-left mui-col-xs-7">
+								<h5>张教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+								<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+							</div>
+							<div class="mui-pull-right mui-col-xs-2" style='margin-right: 10px;'>
+								<span class="mui-icon mui-icon-phone-filled coachIcon"></span>
+								<span class="mui-icon mui-icon-chat coachIcon"></span>
+							</div>
+						</a>
+						<!--教练的工作安排-->
+						<ul class="mui-table-view mui-table-view-chevron">
+							<li class="mui-table-view-cell">
+								<h5>张教练未来的工作安排</h5>
+								<span class="mui-h6">上午:6点到12点,下午:12点18点,晚上18点到24点</span>
+							</li>
+							<li class="mui-table-view-cell">
+								<table class="mui-col-xs-12 WorkTable" >
+									<thead>
+										<tr>
+											<th class="mui-col-xs-2"></th>
+											<th class="mui-col-xs-2"><span class="mui-h6 iconOrangeCircular">今日</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/2</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/3</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/4</span></th>
+											<th class="mui-col-xs-2"><span class="mui-h6">8/5</span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><span class="mui-h6">上午</span></td>
+											<td><span class="mui-h6 BlueBox">已满 <span class=""></span></span></td>
+											<td><span class="mui-h6 BlueBox">已满 <span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 BlueBox Have">科目二 80.00<span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 BlueBox Have">科目二 80.00<span class="RedOriginIcon"></span></td>
+											<td><span class="mui-h6 BlueBox">已满 <span class=""></span></span></td>
+										</tr>
+										<tr>
+											<td><span class="mui-h6">下午</span></td>
+											<td><span class="mui-h6 OrangeBox">已满 <span class=""></span></span></td>
+											<td><span class="mui-h6 OrangeBox">休息 <span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 OrangeBox Have">科目三 80.00<span class="RedOriginIcon"></span></span></td>
+											<td><span class="mui-h6 OrangeBox Have">科目三 80.00<span class="RedOriginIcon"></span></td>
+											<td><span class="mui-h6 OrangeBox Have">科目三 80.00<span class=""></span></td>
+										</tr>
+										<tr>
+											<td><span class="mui-h6">晚上</span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></td>
+											<td><span class="mui-h6 grayBox">休息 <span class=""></span></td>
+										</tr>
+									</tbody>
+								</table>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<div class="mui-table-view">
+					<div class="mui-table-view-cell">
+						<a href="#" class="mui-h6" style="text-align: center;">查看更多教练>></a>
+					</div>
+				</div>
+				<!--这是浏览历史-->
+				<div class="mui-table-view">
+					<div class="mui-table-view-cell">
+						<h5>最近浏览过的教练</h5>
+					</div>
+				</div>
+				<ul class="mui-table-view mui-grid-view mui-grid-12">	
+					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+						<a href="#">
+							<span class="HeadCoach"><img src="img/headImg.png" width="100%"/></span>
+							<div class="mui-media-body" style="font-size:14px;">
+								李教练
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+						<a href="#">
+							<span class="HeadCoach"><img src="img/headImg.png" width="100%"/></span>
+							<div class="mui-media-body" style="font-size:14px;">
+								李教练
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+						<a href="#">
+							<span class="HeadCoach"><img src="img/headImg.png" width="100%"/></span>
+							<div class="mui-media-body" style="font-size:14px;">
+								李教练
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+						<a href="#">
+							<span class="HeadCoach"><img src="img/headImg.png" width="100%"/></span>
+							<div class="mui-media-body" style="font-size:14px;">
+								李教练
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+						<a href="#">
+							<span class="HeadCoach"><img src="img/headImg.png" width="100%"/></span>
+							<div class="mui-media-body" style="font-size:14px;">
+								李教练
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-2">
+						<a href="#">
+							<span class="HeadCoach"><img src="img/headImg.png" width="100%"/></span>
+							<div class="mui-media-body" style="font-size:14px;">
+								李教练
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-------------------------------------------------------------------->
+			<div id="item2mobile" class="mui-slider-item mui-control-content">
+				<!--我的预约-->
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<h5>最近预约</h5>
+					</li>
+					<li class="mui-table-view-cell">
+						<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+							<!--
+								等待中的class 时waitIcon
+							-->
+							<a class="mui-control-item mui-active" href="#item1mobileChild">
+									<span class="iconTB waitIcon">8/3<br/>科目三</span>
+									<div>李教练</div>
+								</a>
+							<a class="mui-control-item" href="#item2mobileChild">
+									<span class="iconTB IsIcon">8/1<br/>科目二</span>
+									<div>李教练</div>
+								</a>
+							<a class="mui-control-item" href="#item3mobileChild">
+									<span class="iconTB CompletedIcon">7/23<br/>科目二</span>
+									<div>李教练</div>
+								</a>
+							<a class="mui-control-item" href="#item4mobileChild">
+									<span class="iconTB CompletedIcon">7/15<br/>科目三</span>
+									<div>李教练</div>
+								</a>
+							<a class="mui-control-item" href="#item5mobileChild">
+									<span class="iconTB CompletedIcon">7/2<br/>科目二</span>
+									<div>李教练</div>
+								</a>
+						</div>
+						<div class="mui-slider-group">
+							<div id="item1mobileChild" class="mui-slider-item mui-control-content mui-active">
+								<!--这是等待学车的样式-->
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a href="#">
+											<span class="mui-h5 mui-pull-left" style="width: 100%;">预约时间: <b>上午8:00~9:00(1小时)</b></span>
+											<img src="img/u143.png" class="mui-media-object mui-pull-left"/>
+											<div class="mui-media-body mui-pull-left mui-col-xs-7">
+												<h5>李教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+												<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+											</div>
+											<div class="mui-pull-right mui-col-xs-2" style='margin-right: 10px;'>
+												<span class="mui-icon mui-icon-phone-filled coachIcon"></span>
+												<span class="mui-icon mui-icon-chat coachIcon"></span>
+											</div>
+											<div style="clear:both;padding-top: 10px;padding-left: 50px;">
+												<h5 style="color:#f67f12;font-weight: bold;">状态:等待学车</h5>
+												<a href="#" class="mui-btn mui-btn-orange" style="padding: 4px 20px;">撤消</a>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div id="item2mobileChild" class="mui-slider-item mui-control-content ">
+								 <!--这是正在学车的样式-->
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a href="#">
+											<span class="mui-h5 mui-pull-left" style="width: 100%;">预约时间: <b>上午8:00~9:00(1小时)</b></span>
+											<img src="img/u143.png" class="mui-media-object mui-pull-left"/>
+											<div class="mui-media-body mui-pull-left mui-col-xs-7">
+												<h5>李教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+												<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+											</div>
+											<div class="mui-pull-right mui-col-xs-2" style='margin-right: 10px;'>
+												<span class="mui-icon mui-icon-phone-filled coachIcon"></span>
+												<span class="mui-icon mui-icon-chat coachIcon"></span>
+											</div>
+											<div style="clear:both;padding-top: 10px;padding-left: 50px;">
+												<h5 style="color:#0099ff;font-weight: bold;">状态:准备学车</h5>
+												<p class="mui-ellipsis-2">温馨提示:请准时与教练取得联系,如有特殊情况请手机练习</p>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div id="item3mobileChild" class="mui-slider-item mui-control-content ">
+								<!--这是已完成学车的样式-->
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a href="#">
+											<span class="mui-h5 mui-pull-left" style="width: 100%;">预约时间: <b>上午8:00~9:00(1小时)</b></span>
+											<img src="img/u143.png" class="mui-media-object mui-pull-left"/>
+											<div class="mui-media-body mui-pull-left mui-col-xs-9">
+												<h5>李教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+												<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+											</div>
+											<div class="CompletedImg">
+												<img src="img/Completed.png" />
+											</div>
+											<div style="clear:both;padding-top: 10px;padding-left: 50px;">
+												<h5 style="color:#0099ff;font-weight: bold;">我的评价: <span class="evaluate"></span></h5>
+												<p class="mui-ellipsis-2">这个教练很有耐心，非常不错哟。这个教练很有耐心，非常不错哟。</p>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div id="item4mobileChild" class="mui-slider-item mui-control-content ">
+								<!--这是已完成学车的样式-->
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a href="#">
+											<span class="mui-h5 mui-pull-left" style="width: 100%;">预约时间: <b>上午8:00~9:00(1小时)</b></span>
+											<img src="img/u143.png" class="mui-media-object mui-pull-left"/>
+											<div class="mui-media-body mui-pull-left mui-col-xs-9">
+												<h5>李教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+												<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+											</div>
+											<div class="CompletedImg">
+												<img src="img/Completed.png" />
+											</div>
+											<div style="clear:both;padding-top: 10px;padding-left: 50px;">
+												<h5 style="color:#0099ff;font-weight: bold;">我的评价: <span class="evaluate"></span></h5>
+												<p class="mui-ellipsis-2">这个教练很有耐心，非常不错哟。这个教练很有耐心，非常不错哟。</p>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<div id="item5mobileChild" class="mui-slider-item mui-control-content ">
+								<!--这是已完成学车的样式-->
+								<ul class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<a href="#">
+											<span class="mui-h5 mui-pull-left" style="width: 100%;">预约时间: <b>上午8:00~9:00(1小时)</b></span>
+											<img src="img/u143.png" class="mui-media-object mui-pull-left"/>
+											<div class="mui-media-body mui-pull-left mui-col-xs-9">
+												<h5>李教练&nbsp;<span class="mui-h6">长征驾校</span></h5>
+												<p class="mui-ellipsis-2">学车位置：成都市锦江区三环路航天立交外侧（加气站后面）</p>
+											</div>
+											<div class="CompletedImg">
+												<img src="img/Completed.png" />
+											</div>
+											<div style="clear:both;padding-top: 10px;padding-left: 50px;">
+												<h5 style="color:#0099ff;font-weight: bold;">我的评价: <span class="evaluate"></span></h5>
+												<p class="mui-ellipsis-2">这个教练很有耐心，非常不错哟。这个教练很有耐心，非常不错哟。</p>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+</div>
+	<script>
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+
+					callback: downRefresh1
+				}
+
+			}
+		});
+		function downRefresh1(){
+			alert("向下");
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+		}
+		mui(".mui-content").on("tap",".mui-icon-phone-filled",function(e){
+			alert(1);
+			e.stopPropagation();
+		})
+		mui(".mui-content").on("tap",".mui-icon-chat",function(e){
+			alert(2)
+			e.stopPropagation();
+		})
+		//表格点击跳转预约
+//		console.log(tableTd)
+		mui(".WorkTable").on("tap","td",function(){
+			mui.openWindow({
+				url:"bookingdetails.html",
+				id:"bookingdetails",
+				
+				waiting:{
+					autoShow:true,
+					title:'正在加载...',
+					
+				}
+			})
+		})
+		
+	</script>
+</body>
+</html>

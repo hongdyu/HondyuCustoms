@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.mui-table-view-cell p{
+    		width: 90%;
+    	}
+		.mui-table-view .mui-table-view-cell{
+			border-radius:4px ;
+			border-bottom: 1px solid #e0e0e0;
+			/*border-right: 1px solid #e0e0e0;*/
+			/*border-left: 1px solid #e0e0e0;*/
+		}
+		.mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-table-view-cell{
+			background-color:#fff;
+		}
+		.iconN{
+			background: url("../icon/note.png") no-repeat;
+			background-size: 100% 100%;
+			width: 42px;
+			height: 42px;
+			display: inline-block;
+			float: left;
+		}
+    </style>
+    <script type="text/javascript">
+    	applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) {
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false);
+    </script>
+</head>
+<body>
+
+
+		<!--数据列表-->
+	<div  class="mui-content">
+		<div id="pullrefresh" class=" mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="list" class="mui-table-view">
+
+					<script id="content" type="text/html">
+						<li class="mui-table-view-cell mui-media">
+						<p><span class="iconN"></span>小提示:各考场规则的语音和评分规则略有不同请选择自己将要参加的考试位置</p>
+						</li>
+						<%for(var i=0;i < list.length;i++){%>
+						<li class="mui-table-view-cell mui-media">
+						<a href="cheatsinfo.html?examinationID=<%=list[i].examinationID%>" open-type="examination" class="mui-navigate-right">
+						<h5><%=list[i].title%></h5>
+						<p class='mui-ellipsis'><%=list[i].content%></p>
+						</a>
+						</li>
+						<%}%>
+					</script>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="js/openNews.js"></script>
+	<script src="js/template-native.js"></script>
+	<script src="js/cache.js"></script>
+	<script>
+	//绑定数据
+	var data={
+		list:[
+			{"examinationID":"01","title":"长征驾校","content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？"},
+			{"examinationID":"02","title":"长征驾校1","content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？"},
+			{"examinationID":"03","title":"长征驾校2","content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？"},
+			{"examinationID":"04","title":"长征驾校3","content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？"},
+			{"examinationID":"05","title":"长征驾校4","content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？"},
+			{"examinationID":"06","title":"长征驾校5","content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？"},
+		]
+	};
+	var html = template('content', data);
+	document.getElementById('list').innerHTML = html;
+	//绑定数据结束
+	function init(){
+		var obj="<a href=\"#\" open-type=\"common\" class=\"mui-navigate-right\">"+
+
+				"<h5>幸福 </h5>"+
+				"<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>"+
+				"</a>";
+		mui.init({
+			pullRefresh: {
+				container: '#pullrefresh',
+				down: {
+
+					callback: downRefresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					contentnomore: '没有更多数据了',
+					callback: upRefresh
+				}
+			},
+
+
+		});
+
+
+//			mui.back=function(){
+//				history.go(-1);
+//			}
+		function downRefresh(){
+			alert("下拉刷新");
+			mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+//				pulldownRefresh(obj);
+		}
+		function upRefresh(){
+			pullupRefresh(obj);
+		}
+
+		if (mui.os.plus) {
+			mui.plusReady(function() {
+				setTimeout(function() {
+					mui('#pullrefresh').pullRefresh().pullupLoading();
+				}, 1000);
+
+			});
+		} else {
+			mui.ready(function() {
+				mui('#pullrefresh').pullRefresh().pullupLoading();
+			});
+		}
+	}
+	//这儿写动态创建的部件
+		init();
+
+	var parameter1=GetRequest().cityID;//获取第一个参数
+		alert(parameter1);
+
+	mui("#list").on("tap","a",function(){
+		var _type=this.getAttribute("open-type");
+		if(_type=="examination"){
+
+		}
+	})
+	</script>
+</body>
+</html>

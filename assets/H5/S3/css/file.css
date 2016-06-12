@@ -1,0 +1,40 @@
+.btn{
+	padding:3px 15px;
+	border-radius:10px;
+	margin-right: 5px;
+}
+.waring{
+	border:1px solid #ff9900;
+	color:#ff9900;
+}
+.blue{
+	border:1px solid #7ccbfe;
+	color:#7ccbfe;
+}
+.jingyanfenxiang{
+	height:30px;
+	line-height: 30px;
+}
+.jingyanfenxiang a{
+	float: left;
+	display: inline-block;
+	height: 30px;
+}
+.aixin{
+	float: right;
+	display: inline-block;
+	height: 30px;
+	padding-left: 28px;
+	line-height: 30px;
+	background: url("../img/aixin.png") no-repeat;
+	background-size:center center;
+}
+.xiaoxi{
+	float: right;
+	display: inline-block;
+	height: 30px;
+	padding-left: 28px;
+	line-height: 30px;
+	background: url("../img/xiaoxi.png") no-repeat;
+	background-size:center center;
+}

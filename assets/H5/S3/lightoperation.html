@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>灯光操作</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.Xtubiao1{
+    		margin-top: -8px;
+    		display: inline-block;
+    		width:35px;
+    		height: 35px;
+    		background: url("../icon/note.png") no-repeat;
+    		background-size:100% 100%;
+    	}
+		.Xtubiao2{
+			margin-top: -8px;
+			display: inline-block;
+			width:35px;
+			height: 35px;
+			background: url("../icon/LDetailed.png") no-repeat;
+			background-size:100% 100%;
+		}
+    	.xiangjie{
+    		
+    	}
+    	.xiangjie h5{
+    		/*color:#000;*/
+    		font-weight: bold;
+    	}
+    	.xiangjie ul{
+    		list-style: none;
+    		margin: 0;
+    		padding: 15px;
+    	}
+    	.xiangjie ul li{
+    		margin-top: 15px;
+    		margin-bottom: 15px;
+    	}
+    	.xiangjie .xiangjieImg{
+    		width:100%
+    		
+    	} 
+    	.xiangjie .xiangjieImg img{
+    		width:49%;
+    	}
+    	.iconTP{
+    		display: inline-block;
+    		width: 42px;
+    		height: 42px;
+			margin-bottom: -10px;
+    	}
+		.LightIcon01{
+			background: url("../icon/lighting01.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon02{
+			background: url("../icon/lighting02.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon03{
+			background: url("../icon/lighting03.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon04{
+			background: url("../icon/lighting04.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon05{
+			background: url("../icon/lighting05.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon06{
+			background: url("../icon/lighting06.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon07{
+			background: url("../icon/lighting07.png") no-repeat;
+			background-size: 100% 100%;
+		}
+		.LightIcon08{
+			background: url("../icon/lighting08.png") no-repeat;
+			background-size: 100% 100%;
+		}
+    	#LightOperation .iconTPActive{
+    		background: url("../icon/Loperation2.png") no-repeat;
+    		background-size: 100% 100%;
+    		display: inline-block;
+    		width: 42px;
+    		height: 42px;
+    	}
+    	.mui-active a div.mui-media-body{
+    		color:#0099ff !important;
+    		font-weight: bold;
+    	}
+		.more{
+			display: inline-block;
+			width:100%;
+			text-align: center;
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+<div id="main" class="mui-content">
+	<script id="content" type="text/html">
+		<!--顶部两组图标-->
+		<ul class="mui-table-view mui-grid-view mui-grid-12" id="LightOperation">
+			<%for(var i=0;i < Light.length;i++){%>
+			<li class="mui-table-view-cell mui-media mui-col-xs-3">
+				<a href="" open-type="Operation">
+					<span class="iconTP <%=Light[i].lightIcon%> <%if(i==0){%>iconTPActive<%}%>"></span>
+					<div class="mui-media-body"><%=Light[i].title%></div>
+				</a>
+			</li>
+			<%}%>
+		</ul>
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#">
+					<h4 ><span class="Xtubiao1 mui-pull-left"></span> 扣分 <span class="mui-h6 mui-pull-right">扣分<span id="koufenxiang"><%=Points%></span>项,共<span id="koufen"><%=Points*2%></span>分</span></h4>
+				</a>
+			</div>
+			<div class="mui-table-view-cell mui-h6" style="color:#5480d8">
+				<ul>
+					<%for(var i=0;i<PointsP.length;i++){%>
+					<li><%=i+1%>.<%=PointsP[i].title%></li>
+					<%}%>
+
+				</ul>
+			</div>
+		</div>
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#">
+					<h4><span class="Xtubiao2 mui-pull-left"></span> 详解 <span class="mui-pull-right mui-icon mui-icon-arrowdown" ></span></h4>
+				</a>
+			</div>
+			<div class="xiangjie" id="OperationVideo">
+				<ul>
+					<%for(var i=0;i < OperationVideo.length;i++){%>
+					<li>
+						<a href="#">
+							<h5><%=i+1%>.<%=OperationVideo[i].title%></h5>
+							<div class="xiangjieImg">
+								<img src="<%=OperationVideo[i].videoSrc%>" class="video" alt="" />
+								<img src="<%=OperationVideo[i].imgSrc%>" alt="" />
+							</div>
+							<div class="xiangjieFont">
+								<span class="mui-badge mui-badge-primary">操作</span>&nbsp;<span class="mui-h6"><%=OperationVideo[i].introduction%></span>
+							</div>
+							<p>
+								详解：<%=OperationVideo[i].content%>
+							</p>
+						</a>
+					</li>
+					<%}%>
+				</ul>
+
+			</div>
+
+		</div>
+		<div class="mui-table-view">
+			<div class="mui-table-view-cell">
+				<a href="#" class="more">加载更多>></a>
+			</div>
+		</div>
+	</script>
+
+</div>
+	<script src="js/template-native.js"></script>
+	<script src="js/openNews.js"></script>
+	<script type="text/javascript">
+		//绑定数据
+		var data={
+			"Light":[
+				{"lightIcon":"LightIcon01","title":"灯光1"},
+				{"lightIcon":"LightIcon02","title":"灯光2"},
+				{"lightIcon":"LightIcon03","title":"灯光3"},
+				{"lightIcon":"LightIcon04","title":"灯光4"},
+				{"lightIcon":"LightIcon05","title":"灯光5"},
+				{"lightIcon":"LightIcon06","title":"灯光6"},
+				{"lightIcon":"LightIcon07","title":"灯光7"},
+				{"lightIcon":"LightIcon08","title":"灯光8"},
+			],
+			"Points":3,
+			"PointsP":[
+				{"title":"【灯光1】 (10分)"},
+				{"title":"【灯光1】 (10分)"},
+				{"title":"【灯光1】 (10分)"},
+			],
+			"OperationVideo":[
+				{"title":"夜间在没有路灯、照明不良条件下行驶","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+				{"title":"请将照灯变换成远光","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+				{"title":"夜间同方向近距离跟车行驶","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"},
+				{"title":"夜间在没有路灯、照明不良条件下行驶","videoSrc":"img/img_01.png","imgSrc":"img/img_02.png","introduction":"示宽灯&nbsp;近光灯","content":"内容详解内容详解内容详解内容详解内容详解内容详解内容详解内容"}
+			]
+		};
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+		function lightIconinitialization(){//灯光初始化
+			var LightOperationli=document.getElementById("LightOperation").getElementsByTagName("li");
+			for(var i=0;i<LightOperationli.length;i++){
+				var spanI=LightOperationli[i].getElementsByClassName("iconTP")[0]
+				removeClass(spanI,"iconTPActive");
+			}
+		}
+		mui("#LightOperation").on("tap","a",function(){
+			//灯光操作按钮
+			
+			var type = this.getAttribute("open-type");
+			if(type=="Operation"){
+//				alert("这是灯光操作");
+//				console.log(this.getElementsByClassName("iconTP")[0]);
+				lightIconinitialization();//
+				addClass(this.getElementsByClassName("iconTP")[0],"iconTPActive");//
+			}
+		})
+		mui("#OperationVideo").on("tap","a",function(){
+			alert("这是视屏")
+		})
+//		加载更多
+		var more=document.getElementsByClassName("more")[0];
+		more.addEventListener("tap",function(){
+			alert(1);
+
+			var url="";
+			var OperationVideo=document.getElementById("OperationVideo").getElementsByTagName("ul")[0];
+			var startNum=OperationVideo.children().length;//ul下li的个数
+			var num=5;
+//			moreRefresh(url,startNum,num,OperationVideo)
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <!-- <ImageView
+        android:id="@+id/imageview_head_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/image_corners"
+        android:src="@drawable/ic_launcher" /> -->
+        
+         <com.yhd.HondyuCustom.View.CircleImageView
+            android:id="@+id/imageview_head_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_launcher" />
+    
+    <!-- <com.yhd.HondyuCustom.Helper.CutPicView
+        android:id="@+id/imageview_head_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+	/> -->
+
+</RelativeLayout>

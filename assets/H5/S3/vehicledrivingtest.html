@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>驾考车型</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <style>
+    	.tubiao{
+    		display: inline-block;
+    		/*background: url("img/u29.png") no-repeat;*/
+    		/*background-size:51px 51px ;*/
+    		width: 51px;
+    		height: 51px;
+    	}
+    	.imgClick div{
+    		width: 51px;
+    		text-align: center;
+    		position: absolute;
+    		color:#f67f12;
+    	}
+    	.imgClick{
+    		/*max-width:400px;*/
+    		width: 100%;
+    		height: 500px;
+    		margin: 10px auto;
+    		position: relative;
+    		/*background-color: black;*/
+    	}
+    	.img01{
+    		top: 100px;
+    		left: 25%;
+    	}
+    	.img02{
+    		top:100px;
+    		right: 25%;
+    	}
+    	.img03{
+    		top:250px;
+    		left: 25%;
+    	}
+    	.img04{
+    		top:250px;
+    		right: 25%;
+    	}
+    	/*此为二级图标.img 的定位*/
+    	/*5图标或3图标时*/
+    	.Icon:nth-of-type(1){
+    		top:100px;
+    		left:45%;
+    	}
+    	.Icon:nth-of-type(2){
+    		top:200px;
+    		left:5%;
+    	}
+    	.Icon:nth-of-type(4){
+    		top:250px;
+    		left:45%;
+    	}
+    	.Icon:nth-of-type(3){
+    		top:200px;
+    		right: 5%;
+    	}
+    	.Icon:nth-of-type(5){
+    		top:300px;
+    		left:20%;
+    	}
+    	.Icon:nth-of-type(6){
+    		top:300px;
+    		right:18%;
+    	}
+    	.Icon:nth-of-type(7){
+    		top:50px;
+    		left:5%;
+    	}
+    	.Icon:nth-of-type(8){
+    		top:50px;
+    		right:5%;
+    	}
+    	#chexing{
+
+    	}
+
+    	
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-table-view" style="overflow: hidden;">
+			<h4 style="text-align: center;line-height: 2;">请选择驾照</h4>
+			<div class="imgClick" id="iconClick">
+				<div class="imgIcon img01" data-title="1">
+					<span class="tubiao"><img src="../icon/sedan.png" width="51"/></span>
+					<h5>小车</h5>
+				</div>
+				<div class="imgIcon img02" data-title="2"/>
+					<span class="tubiao"><img src="../icon/truck.png" width="51"/></span>
+					<h5>货车</h5>
+				</div>
+				<div class="imgIcon img03" data-title="3">
+					<span class="tubiao"><img src="../icon/coach.png" width="51"/></span>
+					<h5>客车</h5>
+				</div>
+				<div class="imgIcon img04" data-title="4">
+					<span class="tubiao"><img src="../icon/motorcycle.png" width="51"/></span>
+					<h5>摩托车</h5>
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+		<script type="text/javascript" src="js/openNews.js"></script>
+	<script type="text/javascript" src="js/cache.js"></script>
+		<script>
+			mui.ajax(urlAjax,{
+				data:{
+					key:'LicenseType',
+					contain:''
+				},
+				dataType:'json',//服务器返回json格式数据
+				type:'post',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				success:function(data){
+					console.log(data)
+				},
+				error:function(xhr,type,errorThrown){
+					//异常处理；
+					console.log(type);
+				}
+			});
+
+			//此json为实验品
+			var json=[{"icon":[
+							{"name":"C1手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=c1"},
+							{"name":"C2手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=c2"},
+							{"name":"C3手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=c3"},
+							{"name":"C4手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=c4"},
+							{"name":"C5手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=c5"}
+						]},
+						{"icon":[
+							{"name":"A1手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=A1"},
+							{"name":"A2手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=A2"}
+						]},
+						{"icon":[
+							{"name":"B1手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b1"},
+							{"name":"B2手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b2"},
+							{"name":"B3手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b3"},
+							{"name":"B4手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b4"},
+							{"name":"B5手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b5"},
+							{"name":"B6手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b6"},
+							{"name":"B7手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=b7"}
+
+						]},
+						{"icon":[
+							{"name":"D1手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=d1"},
+							{"name":"D2手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=d2"},
+							{"name":"D3手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=d3"},
+							{"name":"D3手动档","imgSrc":"img/u29.png","dataUrl":"vehicledrivingtest1.html?ID=d4"}
+						]},
+					];
+			//动态创建的div 所有的class都用icon 在css中可以将icon 1~n的top,left值预设好
+//			var obj="<div class=\"img04\" data-title=\"4\">"+
+//					"<span class=\"tubiao\"></span>"+
+//					"<h5>摩托车</h5>"+
+//					"</div>"
+			var imgClick=document.getElementById("iconClick");
+			mui("#iconClick").on("tap",".imgIcon",function(){
+				var _this=this;
+				var img=this.getElementsByTagName("img")[0]
+//				console.log(this);
+				var n=parseInt(_this.getAttribute("data-title"))-1;
+				var classN="Icon"
+				_this.className=classN;
+				_this.getElementsByTagName("img")[0].src=img.src;
+				imgClick.innerHTML="";
+//				alert(json[n].icon[0].name)
+				imgClick.appendChild(_this);//创建源
+
+
+				for(var i=0;i<json[n].icon.length;i++){
+					var obj="<div class='"+classN+"' data-title='"+json[n].icon[i].dataUrl+"'>"+
+					"<span class=\"tubiao\"><img src='"+json[n].icon[i].imgSrc+"'/></span>"+
+					"<h5>"+json[n].icon[i].name+"</h5>"+
+					"</div>";
+					imgClick.innerHTML+=obj;
+				}
+				//动态创建画布以及声明等
+				imgClick.innerHTML+="<canvas id=\"chexing\"></canvas>";
+				var canvas=document.getElementById("chexing");
+				canvas.width = window.screen.width;
+	    		canvas.height = 500;
+
+	    		var ctx=canvas.getContext("2d");
+				var imgIcon=document.getElementsByClassName("Icon");
+				//开始画线
+				for(var i=0;i<imgIcon.length;i++){
+
+						if(i==1){
+							var y1=imgIcon[0].offsetTop+30+30+10;
+							var x1=imgIcon[0].offsetLeft;
+							var y2=imgIcon[1].offsetTop+20;
+							var x2=imgIcon[1].offsetLeft+30;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+						else if(i==2){
+							var y1=imgIcon[0].offsetTop+30+30+10;
+							var x1=imgIcon[0].offsetLeft+50;
+							var y2=imgIcon[2].offsetTop+20;
+							var x2=imgIcon[2].offsetLeft+30;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+						else if(i==3){
+							var y1=imgIcon[0].offsetTop+30+30+30;
+							var x1=imgIcon[0].offsetLeft+25;
+							var y2=imgIcon[3].offsetTop+20;
+							var x2=imgIcon[3].offsetLeft+25;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+						else if(i==4){
+							var y1=imgIcon[0].offsetTop+30+30+25;
+							var x1=imgIcon[0].offsetLeft+10;
+							var y2=imgIcon[4].offsetTop+20;
+							var x2=imgIcon[4].offsetLeft+25;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+						else if(i==5){
+							var y1=imgIcon[0].offsetTop+30+30+25;
+							var x1=imgIcon[0].offsetLeft+40;
+							var y2=imgIcon[5].offsetTop+20;
+							var x2=imgIcon[5].offsetLeft+25;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+						else if(i==6){
+							var y1=imgIcon[0].offsetTop+60;
+							var x1=imgIcon[0].offsetLeft;
+							var y2=imgIcon[6].offsetTop+20;
+							var x2=imgIcon[6].offsetLeft+25;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+						else if(i==7){
+							var y1=imgIcon[0].offsetTop+60;
+							var x1=imgIcon[0].offsetLeft+50;
+							var y2=imgIcon[7].offsetTop+20;
+							var x2=imgIcon[7].offsetLeft+25;
+							Harc(ctx,x1,y1,x2,y2);
+
+						}
+
+
+				}
+
+			})
+
+
+
+
+
+			function Harc(ctx,x1,y1,x2,y2){
+				ctx.beginPath();
+				ctx.strokeStyle = "#0099ff";
+				ctx.lineWidth = 2;
+		        ctx.moveTo(x1,y1);  //开始坐标
+		        ctx.lineTo(x2,y2); //结束坐标
+				ctx.stroke();
+			}
+
+
+			mui(".mui-content").on("tap",".Icon",function(event){
+					var _this=this.getAttribute("data-title")
+				   window.location.href=_this;
+			})
+
+		</script>
+	</div>
+</body>
+</html>

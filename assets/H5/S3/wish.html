@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html manifest="offline.manifest">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>许愿</title>
+    <script src="js/mui.js"></script>
+    <link href="css/mui.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/file.css"/>
+	<style>
+		ul li{
+			border-radius:4px ;
+			border-bottom: 1px solid #e0e0e0;
+			/*border-right: 1px solid #e0e0e0;*/
+			/*border-left: 1px solid #e0e0e0;*/
+		}
+		.mui-table-view{
+			background-color: #e0e0e0;
+		}
+		.mui-table-view-cell{
+			background-color:#fff;
+		}
+	</style>
+    <script type="text/javascript" charset="utf-8">
+    applicationCache.addEventListener('updateready', function(e) {
+		    if (applicationCache.status == applicationCache.UPDATEREADY) { 
+		        applicationCache.swapCache(); //使用新版本资源
+		        window.location.reload(); //刷新页面
+		    }
+		}, false); 
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="main" class="mui-content">
+		<script id="content" type="text/html">
+			<div class="mui-table-view">
+				<div class="mui-table-view-cell">
+					<a href="#" open-type="common">
+						<img class="mui-media-object mui-pull-left" src="img/u81.png">
+						<div class="mui-media-body">
+							<h4>曾经有<%=WishNum%>位考友在此许过愿~</h4>
+							<p class='mui-ellipsis'>据说,在这里许过愿的人都考过了~</p>
+						</div>
+					</a>
+
+				</div>
+				<div class="mui-table-view-cell">
+					<!--精华贴-->
+					<%for(var i=0;i<experienceSharing.length;i++){%>
+					<p class="mui-ellipsis jingyanfenxiang" >
+						<span class="<%if(experienceSharing[i].essence==1){%>essence<%}%>"></span>
+						<span class="<%if(experienceSharing[i].recommend1==1){%>recommend1<%}%>"></span>
+						<a href="<%=experienceSharing[i].href%>" open-type="common"><%=experienceSharing[i].title%></a>
+					</p>
+					<%}%>
+				</div>
+			</div>
+			<!--精选话题-->
+			<!--标题栏-->
+			<div id="segmentedControl" class="mui-segmented-control">
+				<%for(var i=0;i<list.length;i++){%>
+				<a class="mui-control-item <%if(i==0){%>mui-active<%}%>" href="#<%=list[i].hrefID%>">
+					<span class="mui-h5"><%=list[i].title%></span>
+				</a>
+				<%}%>
+
+			</div>
+
+
+
+			<!--话题内容-->
+			<div class="mui-content-padded" style="margin:1px">
+				<%for(var i=0;i<list.length;i++){%>
+				<div id="<%=list[i].hrefID%>" class="mui-control-content <%if(i==0){%>mui-active<%}%>">
+
+					<ul id="morefresh<%=i%>" class="mui-table-view">
+						<%for(var j=0;j<list[i].fresh.length;j++){%>
+						<li class="mui-table-view-cell mui-media">
+							<a href="topicdetail.html?ID=<%=list[i].fresh[j].ID%>" open-type="common">
+								<img class="mui-media-object mui-pull-left" src="<%=list[i].fresh[j].HeadImg%>">
+								<div class="mui-media-body">
+									<h5><%=list[i].fresh[j].nickname%>
+										<%if(list[i].fresh[j].recommend==1){%>
+										<span class="recommend2"></span>
+										<%}%>
+									</h5>
+									<p class='mui-ellipsis'><%=list[i].fresh[j].content%></p>
+									<p>
+										<span class="timer_01" style="float: left;"><%=list[i].fresh[j].time%> &nbsp;</span>
+										<span class="address_01" style="float: left;"><%=list[i].fresh[j].address%></span>
+
+										<span class="xiaoxi"><%=list[i].fresh[j].X%></span>
+										<span class="aixin"><%=list[i].fresh[j].A%></span>&nbsp;
+									</p>
+								</div>
+							</a>
+						</li>
+						<%}%>
+
+					</ul>
+					<ul  class="mui-table-view">
+						<li class="mui-table-view-cell mui-media">
+							<a href="#" class="more">
+								<h5 style="text-align: center;">点击更多>></h5>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<%}%>
+
+
+			</div>
+		</script>
+
+	</div>
+	<script src="js/template-native.js"></script>
+	<script type="text/javascript" src="js/openNews.js"></script>
+	<script type="text/javascript">
+		//绑定数据
+		var data={
+			"WishNum":21943,
+			"experienceSharing":[
+				{"href":"#","essence":1,"recommend1":1,"title":"资深考友吐血推荐珍藏多年的秘籍"},
+				{"href":"#","essence":1,"recommend1":1,"title":"资深考友吐血推荐珍藏多年的秘籍"},
+				{"href":"#","essence":1,"recommend1":1,"title":"资深考友吐血推荐珍藏多年的秘籍"},
+				{"href":"#","essence":1,"recommend1":1,"title":"资深考友吐血推荐珍藏多年的秘籍"},
+			],
+			"list":[
+				{"hrefID":"item1mobile","title":"精选话题","fresh":[
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称01","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称02","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称03","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称04","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称05","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+				]},
+				{"hrefID":"item2mobile","title":"基本常识","fresh":[
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称11","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称12","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称13","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称14","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称15","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+				]},
+				{"hrefID":"item3mobile","title":"考试技巧","fresh":[
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称21","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称22","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称23","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称24","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称25","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+				]},
+				{"hrefID":"item4mobile","title":"经验分享","fresh":[
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称31","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称32","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称33","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称34","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69},
+					{"ID":01,"HeadImg":"img/shuijiao.jpg","nickname":"学员昵称35","recommend":1,"content":"能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？","time":"1小时前","address":"四川成都","X":28,"A":69}
+				]}
+
+			]
+
+		};
+		var html = template('content', data);
+		document.getElementById('main').innerHTML = html;
+		//绑定数据结束
+		var obj="<a href=\"#\" open-type=\"common\">"+
+					"<img class=\"mui-media-object mui-pull-left\" src=\"img/shuijiao.jpg\">"+
+					"<div class=\"mui-media-body\">"+
+						"<h5>学员昵称 <span class=\"recommend2\"></span></h5>"+
+						"<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>"+
+						"<p>"+
+							"<span class=\"timer_01\" style=\"float: left;\">1小时前 &nbsp;</span>"+
+							"<span class=\"address_01\" style=\"float: left;\">四川成都</span>"+
+							
+							"<span class=\"xiaoxi\">28</span>"+
+							"<span class=\"aixin\">69</span>&nbsp;"+
+						"</p>"+
+					"</div>"+
+				"</a>";
+			mui(".mui-content").on("tap","#more",function(){
+				
+				moreRefresh(obj)
+			})
+			
+	</script>
+</body>
+</html>
